@@ -1,0 +1,46 @@
+
+
+a {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: #EDE7F6;
+}
+
+.container {
+  display: flex;
+
+}
+.main {
+  flex:4;
+  display: flex;
+  align-items: center;
+}
+.items {
+  flex:1;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media(min-width:600px) {
+  .menu {
+    display: none;
+  }
+  .items {
+    display: flex;
+  }
+  .items a {
+    margin:0 5px;
+  }
+}
+
+@media(max-width:599px) {
+  .menu {
+    display: block;
+  }
+  .items {
+    display: none;
+  }
+}
