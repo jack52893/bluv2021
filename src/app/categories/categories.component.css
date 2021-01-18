@@ -1,0 +1,22 @@
+@media (max-width: 599px) {
+  :host {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1rf);
+    grid-template-rows: repeat(4, 1rf);
+    grid-gap: 15px;
+  }
+}
+@media (min-width: 600px) {
+  :host {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1rf);
+    grid-template-rows: repeat(2, 1rf);
+    grid-gap: 15px;
+  }
+}
+
+.category img {
+  width: 100%;
+}

@@ -9,17 +9,32 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { HomeComponent } from './home/home.component';
+import { DealsComponent } from './deals/deals.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { PopularComponent } from './popular/popular.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SidenavComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    SidenavComponent,
+    HomeComponent,
+    DealsComponent,
+    CategoriesComponent,
+    PopularComponent,
+    ProductComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    LayoutModule
+    LayoutModule,
+    MatCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

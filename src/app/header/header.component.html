@@ -2,7 +2,7 @@
   <mat-toolbar-row *ngIf='!mobile'>
     <div class="tablet-container">
       <div class="tablet-main">
-        <div><a routerLink='/'>Material 2021</a></div>
+        <div><button class='title' mat-button type="button">Material 2021</button></div>
       </div>
       <div class="tablet-items">
         <form class="tablet-search-form">
@@ -16,12 +16,13 @@
           <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
         </form>
         <!-- <input class="tablet-search-input" type="search"> -->
-        <a>
+        <button type="button" mat-icon-button>
           <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
-        </a>
-        <a>
+        </button>
+
+        <button type='button' mat-icon-button>
           <mat-icon>account_circle</mat-icon>
-        </a>
+        </button>
       </div>
     </div>
   </mat-toolbar-row>
@@ -32,15 +33,15 @@
         <button class="mobile-menu" mat-icon-button (click)='onToggle()'>
           <mat-icon>menu</mat-icon>
         </button>
-        <div><a routerLink='/'>Material 2021</a></div>
+        <div><button class="title" type="button" mat-button>Material 2021</button></div>
       </div>
       <div class="mobile-items">
-        <a>
+        <button type="button" mat-icon-button>
           <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
-        </a>
-        <a>
+        </button>
+        <button type="button" mat-icon-button>
           <mat-icon>account_circle</mat-icon>
-        </a>
+        </button>
       </div>
     </div>
   </mat-toolbar-row>

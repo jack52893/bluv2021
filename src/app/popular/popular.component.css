@@ -1,0 +1,18 @@
+@media (min-width: 600px) {
+  :host {
+    display: grid;
+    grid-template-columns: repeat(4, 1rf);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 15px;
+    margin: 5px;
+  }
+}
+@media (max-width: 599px) {
+  :host {
+    display: grid;
+    grid-template-columns: repeat(2, 1rf);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 15px;
+    margin: 5px;
+  }
+}
