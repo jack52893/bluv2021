@@ -11,7 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatRippleModule } from '@angular/material/core';
 
 const MaterialComponents = [
   MatSnackBarModule,
@@ -25,13 +27,14 @@ const MaterialComponents = [
   MatInputModule,
   MatProgressSpinnerModule,
   MatCardModule,
-  MatDialogModule
-]
+  MatDialogModule,
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatRippleModule
+];
 
 @NgModule({
   imports: [...MaterialComponents],
-  exports: [...MaterialComponents]
+  exports: [...MaterialComponents],
 })
-export class MaterialModule {
-
-}
+export class MaterialModule {}

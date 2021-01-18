@@ -1,17 +1,61 @@
-<mat-toolbar color='primary' class='container'>
-  <div class="main">
-    <button class="menu" mat-icon-button (click)='onToggle()'>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div><a routerLink='/'>Material 2021</a></div>
-  </div>
-  <div class="items">
+<mat-toolbar color='primary'>
+  <mat-toolbar-row *ngIf='!mobile'>
+    <div class="tablet-container">
+      <div class="tablet-main">
+        <div><a routerLink='/'>Material 2021</a></div>
+      </div>
+      <div class="tablet-items">
+        <form class="tablet-search-form">
+          <input class='tablet-search-input' placeholder="Search" type="text" aria-label="Product"
+            [formControl]="search" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
+        </form>
+        <!-- <input class="tablet-search-input" type="search"> -->
+        <a>
+          <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
+        </a>
+        <a>
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
 
-    <a>Item 1</a>
-    <a>Item 1</a>
-    <a>Item 1</a>
-    <a>Item 1</a>
-    <a>Item 1</a>
-
-  </div>
+  <mat-toolbar-row class="mobile-row" *ngIf='mobile'>
+    <div class="mobile-container">
+      <div class="mobile-main">
+        <button class="mobile-menu" mat-icon-button (click)='onToggle()'>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div><a routerLink='/'>Material 2021</a></div>
+      </div>
+      <div class="mobile-items">
+        <a>
+          <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
+        </a>
+        <a>
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="mobile-row" *ngIf='mobile'>
+    <form class="mobile-search-form">
+      <mat-form-field floatLabel='never' class="mobile-search-field">
+        <mat-icon class="mobile-search-icon" matSuffix>search</mat-icon>
+        <mat-label class="mobile-search-label">Search</mat-label>
+        <input type="search" aria-label="Search" matInput [formControl]="search" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </mat-toolbar-row>
 </mat-toolbar>

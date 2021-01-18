@@ -1,46 +1,116 @@
-
-
 a {
   cursor: pointer;
   color: white;
   text-decoration: none;
 }
 a:hover {
-  color: #EDE7F6;
+  color: #ede7f6;
 }
 
-.container {
-  display: flex;
-
-}
-.main {
-  flex:4;
-  display: flex;
-  align-items: center;
-}
-.items {
-  flex:1;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media(min-width:600px) {
-  .menu {
-    display: none;
+@media (min-width: 600px) {
+  .tablet-search {
+    width: 100%;
   }
-  .items {
+  .tablet-row {
+    height: 50px;
+  }
+  .tablet-search-form {
+    width: 80%;
+    vertical-align: middle;
+    margin:0 10px;
+  }
+  .tablet-search-field {
+    width: 100%;
+  }
+  .tablet-search-input,
+  .tablet-search-input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #babafc;
+    background-color: transparent;
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0px 5px;
+  }
+  .tablet-search-input:focus {
+    border-bottom: 2px solid #ffffff;
+    opacity: 1;
+  }
+  .tablet-search-input::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+  .tablet-search-icon {
+    margin-left: -25px;
+    vertical-align: middle;
+  }
+  .tablet-container {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .items a {
-    margin:0 5px;
+  .tablet-main {
+    display: flex;
+    align-items: center;
+  }
+  .tablet-items {
+    display: flex;
+    align-items: center;
+  }
+  .tablet-items a {
+    margin: 0px 10px;
+    vertical-align: middle;
+  }
+  .tablet-items a mat-icon {
+    vertical-align: middle;
   }
 }
 
-@media(max-width:599px) {
-  .menu {
-    display: block;
+@media (max-width: 599px) {
+  .mobile-search {
+    width: 100%;
   }
-  .items {
-    display: none;
+  .mobile-row {
+    height: 50px;
+  }
+  .mobile-search-form {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .mobile-search-field {
+    width: 100%;
+  }
+  .mobile-search-label {
+    color: white;
+    opacity: 0.7;
+    font-size: 18px;
+  }
+  .mobile-search-icon {
+    position: relative;
+    top: 8px;
+  }
+  .mobile-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-main {
+    display: flex;
+    align-items: center;
+  }
+  .mobile-items {
+    display: flex;
+    align-items: center;
+  }
+  .mobile-items a {
+    margin: 0px 10px;
+    vertical-align: middle;
+  }
+  .mobile-items a mat-icon {
+    vertical-align: middle;
   }
 }
