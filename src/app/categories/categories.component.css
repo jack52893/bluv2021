@@ -2,8 +2,8 @@
   :host {
     margin: 5px;
     display: grid;
-    grid-template-columns: repeat(2, 1rf);
-    grid-template-rows: repeat(4, 1rf);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-gap: 15px;
   }
 }
@@ -11,12 +11,12 @@
   :host {
     margin: 5px;
     display: grid;
-    grid-template-columns: repeat(4, 1rf);
-    grid-template-rows: repeat(2, 1rf);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-gap: 15px;
   }
 }
 
-.category img {
+img {
   width: 100%;
 }

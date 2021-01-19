@@ -15,6 +15,7 @@ import { DealsComponent } from './deals/deals.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PopularComponent } from './popular/popular.component';
 import { ProductComponent } from './product/product.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductComponent } from './product/product.component';
     DealsComponent,
     CategoriesComponent,
     PopularComponent,
-    ProductComponent
+    ProductComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

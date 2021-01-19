@@ -30,7 +30,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatAutocompleteModule,
   MatBadgeModule,
-  MatRippleModule
+  MatRippleModule,
 ];
 
 @NgModule({

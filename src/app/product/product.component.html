@@ -1,9 +1,24 @@
-<div class="product" matRipple>
+<div class="product">
   <div class="content">
-    <img [src]='product.imageUrl' [alt]='product.name'>
+    <!-- <div class="favorite" *ngIf='!favorite'>
+      <mat-icon color='primary'>favorite_border</mat-icon>
+    </div>
+    <div class="favorite" *ngIf='favorite'>
+      <mat-icon color='primary'>favorite</mat-icon>
+    </div> -->
+    <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
     <div class="caption">
-      <span class="title">{{ product.name }}</span>
-      <span class="price">{{ product.price }}$</span>
+      <div class="title">
+        <span>{{ product.name }}</span>
+      </div>
+      <div class="details">
+        <!-- <div class="rating">
+          <app-rating></app-rating>
+        </div> -->
+        <div class="price">
+          <span>{{ product.price }}$</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

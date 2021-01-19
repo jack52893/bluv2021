@@ -4,14 +4,14 @@ import { Product } from './product.model';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product;
-  
-  constructor() { }
+  @Input() favorite = false;
+  @Input() rating = 5;
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }
