@@ -2,7 +2,7 @@
   <mat-toolbar-row *ngIf='!mobile'>
     <div class="tablet-container">
       <div class="tablet-main">
-        <div><button class='title' mat-button type="button">Material 2021</button></div>
+        <div><button class='title' mat-button type="button" routerLink="/">Material 2021</button></div>
       </div>
       <div class="tablet-items">
         <form class="tablet-search-form">
@@ -33,7 +33,7 @@
         <button class="mobile-menu" mat-icon-button (click)='onToggle()'>
           <mat-icon>menu</mat-icon>
         </button>
-        <div><button class="title" type="button" mat-button>Material 2021</button></div>
+        <div><button class="title" routerLink="/" type="button" mat-button>Material 2021</button></div>
       </div>
       <div class="mobile-items">
         <button type="button" mat-icon-button>

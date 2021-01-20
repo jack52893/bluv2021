@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+.title {
+  font-weight: bold;
+}
+.rating {
+  margin-left: 10px;
+}

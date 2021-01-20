@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+.container {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container .form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.container h1 {
+  text-align: center;
+  margin: 15px auto;
+}
+.container .form-field {
+  margin-top: 10px;
+}
+.submit {
+  align-self: center;
+  margin-top: 30px;
+}
+.submit button {
+  width: 100px;
+}
+@media (min-width: 600px) {
+  .container {
+    width: 500px;
+  }
+  .container .form .form-field {
+    width: 300px;
+  }
+}
+@media (max-width: 599px) {
+  .container {
+    width: 100%;
+  }
+  .container .form {
+    width: 80%;
+  }
+  .container .form .form-field {
+    width: 100%;
+  }
+}

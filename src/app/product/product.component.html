@@ -1,24 +1,37 @@
-<div class="product">
-  <div class="content">
+<div class="container">
+  <h1 class='title'>{{ product.name }}</h1>
+  <div class="highlight">
     <!-- <div class="favorite" *ngIf='!favorite'>
       <mat-icon color='primary'>favorite_border</mat-icon>
     </div>
     <div class="favorite" *ngIf='favorite'>
       <mat-icon color='primary'>favorite</mat-icon>
     </div> -->
-    <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
-    <div class="caption">
-      <div class="title">
-        <span>{{ product.name }}</span>
-      </div>
-      <div class="details">
-        <!-- <div class="rating">
-          <app-rating></app-rating>
-        </div> -->
-        <div class="price">
-          <span>{{ product.price }}$</span>
-        </div>
-      </div>
+    <div class="best-seller" *ngIf='bestSeller'><span>Best Seller</span></div>
+  </div>
+  <!-- <img class="image" [src]="product.imageUrl" [alt]="product.name" #preview>
+  <div class="images">
+    <img matRipple *ngFor='let img of productImages' (click)="preview.src = img" [src]="img">
+  </div>
+  <div class="details">
+    <div class="rating">
+      <app-rating [rating]='rating' [reviews]='reviews.length'></app-rating>
     </div>
+    <div class="price">
+      <span>{{ product.price + ' $'}}</span>
+    </div>
+  </div>
+  <div class="description">
+    <p>{{ product.description }}</p>
+  </div>
+  <h3 class="customers-reviews">Customers Reviews:</h3>
+  <div class="reviews">
+    <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
+  </div> -->
+  <div class="related-products">
+    <app-product-item class="product" *ngFor='let product of relatedProducts' [product]='product'></app-product-item>
+  </div>
+  <div class='customers-also-viewed'>
+
   </div>
 </div>

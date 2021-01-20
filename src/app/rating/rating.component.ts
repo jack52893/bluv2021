@@ -8,10 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RatingComponent implements OnInit {
   @Input() rating = 5;
   count = Array(5);
-  @Input() reviews = 1;
-  @Input() showReviews = true;
+  @Input() reviews;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.rating > 5) {
+      this.rating = 5;
+    }
+    if (this.rating < 0) {
+      this.rating = 0;
+    }
+  }
 }

@@ -1,0 +1,32 @@
+<div class="product">
+  <div class="content">
+    <div class="top">
+      <!-- <div class="favorite" *ngIf='!favorite'>
+        <mat-icon color='primary'>favorite_border</mat-icon>
+      </div>
+      <div class="favorite" *ngIf='favorite'>
+        <mat-icon color='primary'>favorite</mat-icon>
+      </div> -->
+      <div class="best-seller" *ngIf='bestSeller'>
+        <span>Best Seller</span>
+      </div>
+    </div>
+    <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
+    <div class="caption">
+      <div class="title">
+        <span>{{ product.name }}</span>
+      </div>
+      <div class="details">
+        <!-- <div class="rating">
+          <app-rating></app-rating>
+        </div> -->
+        <div class="price">
+          <span>{{ product.price + ' $'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="action">
+      <!-- <button mat-icon-button mat-raised-button color='primary' type="button"><mat-icon>add_shopping_cart</mat-icon></button> -->
+    </div>
+  </div>
+</div>

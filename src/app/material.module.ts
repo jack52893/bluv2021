@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRippleModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const MaterialComponents = [
   MatSnackBarModule,
@@ -31,6 +32,7 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatBadgeModule,
   MatRippleModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

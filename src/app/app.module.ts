@@ -14,8 +14,13 @@ import { HomeComponent } from './home/home.component';
 import { DealsComponent } from './deals/deals.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PopularComponent } from './popular/popular.component';
-import { ProductComponent } from './product/product.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 import { RatingComponent } from './rating/rating.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProductComponent } from './product/product.component';
+import { ReviewComponent } from './review/review.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +31,13 @@ import { RatingComponent } from './rating/rating.component';
     DealsComponent,
     CategoriesComponent,
     PopularComponent,
+    ProductCardComponent,
+    RatingComponent,
+    LoginComponent,
+    SignupComponent,
     ProductComponent,
-    RatingComponent
+    ReviewComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ReviewsService } from '../review/reviews.service';
 import { Product } from './product.model';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-product',
@@ -7,11 +10,37 @@ import { Product } from './product.model';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @Input() product: Product;
-  @Input() favorite = false;
-  @Input() rating = 5;
+  product: Product;
+  favorite = false;
+  bestSeller = false;
+  rating = 5;
+  reviews = [];
+  relatedProducts: Product[];
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService,
+    private reviewsService: ReviewsService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.product = this.productsService.getProduct(id);
+      this.reviews = this.reviewsService.getReviews(id);
+      this.rating = this.reviewsService.getRating(id);
+      this.relatedProducts = this.productsService.getRelatedProducts(id);
+    });
+  }
+
+  get productImages() {
+    const images: string[] = [];
+    if (this.product && this.product.imageUrl && this.product.images) {
+      images.push(this.product.imageUrl);
+      for (let i of this.product.images) {
+        images.push(i);
+      }
+    }
+    return images;
+  }
 }

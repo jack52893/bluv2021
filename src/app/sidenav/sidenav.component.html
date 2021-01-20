@@ -1,5 +1,12 @@
 <mat-nav-list>
 
-  <!-- Sidenav links -->
-
+  <a mat-list-item (click)='onClose()' routerLink='/login'>
+    <mat-icon>login</mat-icon>Login
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/signup'>
+    <mat-icon>account_circle</mat-icon>Sign Up
+  </a>
+  <a mat-list-item (click)='onLogout()'>
+    <mat-icon>eject</mat-icon>Logout
+  </a>
 </mat-nav-list>

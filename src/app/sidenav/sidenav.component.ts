@@ -14,6 +14,11 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLogout() {
+
+    this.onClose();
+  }
+
   onClose() {
     this.sidenavClose.emit();
   }
