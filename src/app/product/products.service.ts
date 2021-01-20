@@ -105,7 +105,7 @@ export class ProductsService {
     },
     {
       id: '11',
-      name: 'Laptop Dell Inspiron 450',
+      name: 'Laptop Dell Inspiron 750, 7th Gen Intel Core 8GHz Quad, 2TB SATA Storage, 256G Memory',
       description: 'Laptop Dell Inspiron 450',
       price: '650',
       imageUrl: 'assets/images/products/product-12.jpg',

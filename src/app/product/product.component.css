@@ -69,11 +69,10 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  max-width: 80%;
+  max-width: 100%;
   overflow: auto;
-  min-height: 100%;
 }
 .customers-also-viewed {
   position: relative;
@@ -84,7 +83,7 @@
   min-width: 150px;
   max-width: 150px;
   min-height: 100%;
-
+  margin: 0 5px;
 }
 @media (min-width: 600px) {
 }
@@ -95,5 +94,11 @@
   }
   .images {
     max-width: 90%;
+  }
+  .product {
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 100%;
+    margin: 0 10px;
   }
 }

@@ -21,6 +21,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ProductComponent } from './product/product.component';
 import { ReviewComponent } from './review/review.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { LimitPipe } from './utils/pipes/limit.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     SignupComponent,
     ProductComponent,
     ReviewComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    LimitPipe
   ],
   imports: [
     BrowserModule,

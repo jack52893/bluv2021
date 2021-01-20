@@ -29,9 +29,7 @@
     <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
   </div> -->
   <div class="related-products">
-    <app-product-item class="product" *ngFor='let product of relatedProducts' [product]='product'></app-product-item>
+    <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product" *ngFor='let product of relatedProducts' [product]='product'></app-product-item>
   </div>
-  <div class='customers-also-viewed'>
 
-  </div>
 </div>
