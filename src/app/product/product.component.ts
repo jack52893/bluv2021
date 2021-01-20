@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   rating = 5;
   reviews = [];
   relatedProducts: Product[];
+  customersAlsoViewedProducts: Product[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class ProductComponent implements OnInit {
       this.reviews = this.reviewsService.getReviews(id);
       this.rating = this.reviewsService.getRating(id);
       this.relatedProducts = this.productsService.getRelatedProducts(id);
+      this.customersAlsoViewedProducts = this.productsService.getCustomersAlsoViewedProducts(id);
     });
   }
 

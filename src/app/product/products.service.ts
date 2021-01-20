@@ -105,7 +105,8 @@ export class ProductsService {
     },
     {
       id: '11',
-      name: 'Laptop Dell Inspiron 750, 7th Gen Intel Core 8GHz Quad, 2TB SATA Storage, 256G Memory',
+      name:
+        'Laptop Dell Inspiron 750, 7th Gen Intel Core 8GHz Quad, 2TB SATA Storage, 256G Memory',
       description: 'Laptop Dell Inspiron 450',
       price: '650',
       imageUrl: 'assets/images/products/product-12.jpg',
@@ -180,6 +181,14 @@ export class ProductsService {
   }
 
   getRelatedProducts(id: string): Product[] {
-    return this.products.slice(6, 15);
+    return this.products.slice(5, 15);
+  }
+
+  getCustomersAlsoViewedProducts(id: string): Product[] {
+    return this.products.slice(6, 16);
+  }
+
+  getMostSoldProducts(id: string): Product[] {
+    return this.products.slice(8, 18);
   }
 }

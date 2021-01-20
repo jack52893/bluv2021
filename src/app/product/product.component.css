@@ -65,18 +65,15 @@
 .review {
   margin: 5px auto;
 }
-.related-products {
+.related-products,
+.customers-also-viewed-products {
+  margin: 20px 0;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   max-width: 100%;
-  overflow: auto;
-}
-.customers-also-viewed {
-  position: relative;
-  max-width: 80%;
   overflow: auto;
 }
 .product {
