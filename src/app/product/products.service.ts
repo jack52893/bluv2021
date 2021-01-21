@@ -191,4 +191,12 @@ export class ProductsService {
   getMostSoldProducts(id: string): Product[] {
     return this.products.slice(8, 18);
   }
+
+  searchProducts(query: string): Product[] {
+    return this.products.filter((product) => {
+      const sum = product.name.trim().toLowerCase() + product.description.trim().toLowerCase();
+      const value = query.trim().toLowerCase();
+      return sum.indexOf(value) >= 0;
+    });
+  }
 }

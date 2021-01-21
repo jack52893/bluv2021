@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   mobile = true;
   mobileSub: Subscription;
   cartItemsCount = null;
-  search = new FormControl();
+  form: FormGroup;
   options: string[] = [
     'option 1',
     'option 1',
@@ -38,17 +39,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      search: new FormControl(),
+    });
     this.mobileSub = this.breakpointObserver
       .observe(Breakpoints.XSmall)
       .subscribe((match) => (this.mobile = match.matches));
     this.mobile = this.breakpointObserver.isMatched(Breakpoints.XSmall);
-    this.filteredOptions = this.search.valueChanges.pipe(
+    this.filteredOptions = this.form.get('search').valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+  }
+
+  onSubmit() {
+    const value = this.form.get('search').value;
+    this.onSearch(value);
+  }
+
+  onSearch(value: string) {
+    if (value && value !== '') {
+      this.router.navigateByUrl('/search/' + value);
+    }
+  }
+
+  onOptionSelected(value: string) {
+    this.onSearch(value);
   }
 
   onToggle() {

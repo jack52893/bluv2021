@@ -1,0 +1,7 @@
+<div class="container">
+  <h3>Search results: {{ products.length }} products found:</h3>
+  <div class='products'>
+    <app-product-search matRipple [routerLink]="'/product/' + product.id " class='product'
+      *ngFor='let product of products' [product]='product'></app-product-search>
+  </div>
+</div>

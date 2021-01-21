@@ -24,13 +24,15 @@
   <div class="description">
     <p>{{ product.description }}</p>
   </div>
-  <h3 class="customers-reviews">Customers Reviews:</h3>
+  <h3 class="section-title">Customers reviews:</h3>
   <div class="reviews">
     <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
   </div> -->
+  <h3 class="section-title">Related products:</h3>
   <div class="related-products">
     <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product" *ngFor='let product of relatedProducts' [product]='product'></app-product-item>
   </div>
+  <h3 class="section-title">Customers also viewed:</h3>
   <div class="customers-also-viewed-products">
     <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product" *ngFor='let product of customersAlsoViewedProducts' [product]='product'></app-product-item>
   </div>
