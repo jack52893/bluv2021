@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="title">Search</h1>
+  <form [formGroup]='form' class='form'>
+      <mat-form-field class='form-field' floatLabel='never'>
+        <mat-label>Search</mat-label>
+        <input matInput formControlName='search'>
+      </mat-form-field>
+    </form>
+
+  <h3 class='section-title'>Search results {{ products.length }} products found:</h3>
+<div class='filters'>
+  <button mat-icon-button type="button" (click)='onFilter()'><mat-icon>filter</mat-icon>Filter</button>
+    </div>
+  <div class='products'>
+    <app-product-search matRipple [routerLink]="'/product/' + product.id " class='product'
+      *ngFor='let product of products' [product]='product'></app-product-search>
+  </div>
+</div>

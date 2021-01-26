@@ -8,7 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/search/laptop', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'search/:query', component: SearchComponent },

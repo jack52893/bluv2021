@@ -11,19 +11,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { HomeComponent } from './home/home.component';
-import { DealsComponent } from './deals/deals.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { PopularComponent } from './popular/popular.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { RatingComponent } from './rating/rating.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { ProductComponent } from './product/product.component';
-import { ReviewComponent } from './review/review.component';
-import { ProductItemComponent } from './product-item/product-item.component';
 import { LimitPipe } from './utils/pipes/limit.pipe';
-import { ProductSearchComponent } from './product-search/product-search.component';
-import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -31,19 +21,13 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     SidenavComponent,
     HomeComponent,
-    DealsComponent,
-    CategoriesComponent,
-    PopularComponent,
-    ProductCardComponent,
-    RatingComponent,
     LoginComponent,
     SignupComponent,
-    ProductComponent,
-    ReviewComponent,
-    ProductItemComponent,
     LimitPipe,
-    ProductSearchComponent,
-    SearchComponent
+
+
+
+
   ],
   imports: [
     BrowserModule,

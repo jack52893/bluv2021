@@ -22,13 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   mobileSub: Subscription;
   cartItemsCount = null;
   form: FormGroup;
-  options: string[] = [
-    'option 1',
-    'option 1',
-    'option 1',
-    'option 1',
-    'option 1',
-  ];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
 
   private _filter(value: string): string[] {
@@ -65,6 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onSearch(value: string) {
     if (value && value !== '') {
+      this.form.reset();
       this.router.navigateByUrl('/search/' + value);
     }
   }

@@ -1,0 +1,25 @@
+@media (min-width: 600px) {
+}
+@media (max-width: 599px) {
+  :host-context(.cdk-overlay-pane),
+  :host-context(.cdk-global-overlay-wrapper),
+  :host-context(mat-dialog-container)
+   {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  :host-context(mat-dialog-container.mat-dialog-container) {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+}

@@ -6,8 +6,9 @@
       </div>
       <div class="tablet-items">
         <form [formGroup]='form' (ngSubmit)='onSubmit()' class="tablet-search-form">
-          <input class='tablet-search-input' placeholder="Search" type="text" aria-label="Product"
-            formControlName="search" [matAutocomplete]="auto">
+          <input class='tablet-search-input' placeholder="Search" #trigger='matAutocompleteTrigger' type="text"
+            aria-label="Product" formControlName="search" [matAutocomplete]="auto"
+            (keydown.enter)='$event.preventDefault(); $event.target.blur(); trigger.closePanel(); onSubmit()'>
           <mat-autocomplete (ngSubmit)='onSearch()' (optionActivated)='onOptionSelected($event.option.value)'
             (optionSelected)='onOptionSelected($event.option.value)' #auto="matAutocomplete">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
