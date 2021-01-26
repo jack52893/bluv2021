@@ -9,7 +9,7 @@ import { Deal } from './deal/deal.model';
   styleUrls: ['./deals.component.css'],
 })
 export class DealsComponent implements OnInit, OnDestroy {
-  deals: Deal[];
+  deals: Deal[] = [];
   dealSubscription: Subscription;
 
   constructor(private dealService: DealService) {}

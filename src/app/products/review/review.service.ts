@@ -4,7 +4,7 @@ import { Review } from './review.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ReviewsService {
+export class ReviewService {
   reviews: Review[] = [
     {
       id: '1',

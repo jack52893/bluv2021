@@ -14,6 +14,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LimitPipe } from './utils/pipes/limit.pipe';
+import { MainCategoriesComponent } from './categories/main-categories/main-categories.component';
+import { CategoryComponent } from './categories/category/category.component';
+import { DealsComponent } from './products/deals/deals.component';
+import { SearchComponent } from './products/search/search.component';
+import { ProductSearchComponent } from './products/product-search/product-search.component';
+import { RatingComponent } from './products/rating/rating.component';
+import { ReviewComponent } from './products/review/review.component';
+import { PopularComponent } from './products/popular/popular.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +32,14 @@ import { LimitPipe } from './utils/pipes/limit.pipe';
     LoginComponent,
     SignupComponent,
     LimitPipe,
-
-
-
-
+    CategoryComponent,
+    MainCategoriesComponent,
+    SearchComponent,
+    ProductSearchComponent,
+    RatingComponent,
+    ReviewComponent,
+    PopularComponent,
+    DealsComponent,
   ],
   imports: [
     BrowserModule,

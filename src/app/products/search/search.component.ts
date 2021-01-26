@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +19,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,21 @@ export class SearchComponent implements OnInit {
   }
 
   onFilter() {
-    const dialg = this.dialog.open(FilterComponent);
+    let width = '100%';
+    let height = '100%';
+    let maxWidth = '600px';
+    let maxHeight = '700px';
+    if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
+      width = '100%';
+      height = '100%';
+      maxWidth = '100vw';
+      maxHeight = '100vh';
+    }
+    const dialg = this.dialog.open(FilterComponent, {
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
+      height: height,
+      width: width,
+    });
   }
 }

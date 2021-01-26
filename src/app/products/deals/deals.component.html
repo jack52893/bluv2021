@@ -1,7 +1,7 @@
 <mat-carousel [proportion]='50' [interval]='10000' [slides]='3'>
-  <mat-carousel-slide matRipple *ngFor='let deals of deals'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
     <a routerLink='/'>
-      <img class="image" [src]="deals.imageUrl">
+      <img class="image" [src]="deal.imageUrl">
     </a>
   </mat-carousel-slide>
 </mat-carousel>
