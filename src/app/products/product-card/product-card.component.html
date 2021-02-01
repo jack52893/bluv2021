@@ -1,7 +1,7 @@
 <div class="product">
   <div class="content">
     <div class="highlight">
-      <div class="favorite">
+      <div class="favorite" (click)='$event.stopPropagation();onFavorite()'>
         <mat-icon *ngIf='!favorite' color='primary'>favorite_border</mat-icon>
         <mat-icon *ngIf='favorite' color='primary'>favorite</mat-icon>
       </div>
@@ -19,7 +19,11 @@
           <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
         </div>
         <div class="price">
-          <span>{{ product.price + ' $'}}</span>
+          <div *ngIf='!discount'><span>{{ product.price + ' $'}}</span></div>
+          <div *ngIf='discount'>
+            <del class='discount'>{{ product.price + ' $'}}</del>
+            <span>{{ (priceAfterDiscount | number : '1.0-0') + ' $' }} </span>
+          </div>
         </div>
       </div>
     </div>
