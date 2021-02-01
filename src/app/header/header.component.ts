@@ -10,6 +10,7 @@ import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CartService } from '../cart/service/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -35,7 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       startWith(''),
       map((value) => this._filter(value))
     );
+    this.cartService.cartItemsUpdated.subscribe(count => {
+      this.cartItemsCount = count.length;
+    })
   }
 
   onSubmit() {

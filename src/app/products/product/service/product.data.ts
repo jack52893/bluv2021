@@ -6,10 +6,12 @@ export const products: Product[] = [
     name: 'Samsung Galaxy S21 Ultra 5G',
     description: '',
     price: '1200',
-    imageUrl:
-      'assets/images/products/electronics/cell phones/b96bdcd0-9c6f-4ede-8e58-54a258722272/b96bdcd0-9c6f-4ede-8e58-54a258722272.jpg',
+    // imageUrl:
+    //   'assets/images/products/electronics/cell phones/b96bdcd0-9c6f-4ede-8e58-54a258722272/b96bdcd0-9c6f-4ede-8e58-54a258722272.jpg',
+    imageUrl: 'assets/images/preview/image-1.jpg',
     images: [
-      'assets/images/products/electronics/cell phones/b96bdcd0-9c6f-4ede-8e58-54a258722272/images/b96bdcd0-9c6f-4ede-8e58-54a258722272-1.jpg',
+      // 'assets/images/products/electronics/cell phones/b96bdcd0-9c6f-4ede-8e58-54a258722272/images/b96bdcd0-9c6f-4ede-8e58-54a258722272-1.jpg',
+      'assets/images/preview/image-2.jpg'
     ],
   },
   {

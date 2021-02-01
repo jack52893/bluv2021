@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
+import { CartService } from 'src/app/cart/service/cart.service';
 import { DiscountService } from '../discount/service/discount.service';
-import {
-  FavoriteService,
-} from '../favorite/service/favorite.service';
+import { FavoriteService } from '../favorite/service/favorite.service';
 import { Product } from '../product/service/product.model';
 
 @Component({
@@ -23,7 +22,8 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private favoriteService: FavoriteService,
-    private discountService: DiscountService
+    private discountService: DiscountService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -50,5 +50,14 @@ export class ProductCardComponent implements OnInit {
 
   onFavorite() {
     this.favoriteService.favorite(this.product.id);
+  }
+
+  addToCart() {
+    this.cartService.addToCart(
+      this.product.id,
+      this.product.name,
+      this.product.imageUrl,
+      this.product.price
+    );
   }
 }

@@ -1,0 +1,25 @@
+<div class="container" *ngIf='cartItems.length === 0'>
+  Cart is empty!
+</div>
+<div class="container" *ngIf='cartItems.length > 0'>
+  <div class="item" *ngFor='let item of cartItems'>
+    <img class='image' [src]="item.imageUrl" [alt]="item.name">
+    <div class="name">
+      {{ item.name }}
+    </div>
+    <div class="price">
+      {{ item.price}}
+    </div>
+    <div>
+      <mat-form-field>
+        <input type="number" matInput [(value)]='item.quantity' min="1">
+      </mat-form-field>
+      <button type="button" (click)='onAdd(item)'><mat-icon>add</mat-icon></button>
+      <button type="button" (click)='onRemove(item)'><mat-icon>remove</mat-icon></button>
+    </div>
+    <div>
+      <button mat-button (click)='onDelete(item.id)'>Delete
+      </button>
+    </div>
+  </div>
+</div>

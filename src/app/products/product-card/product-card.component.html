@@ -1,10 +1,10 @@
 <div class="product">
   <div class="content">
     <div class="highlight">
-      <div class="favorite" (click)='$event.stopPropagation();onFavorite()'>
+      <button class="favorite" mat-icon-button (mousedown)='$event.stopPropagation();' (click)='$event.stopPropagation();onFavorite()'>
         <mat-icon *ngIf='!favorite' color='primary'>favorite_border</mat-icon>
         <mat-icon *ngIf='favorite' color='primary'>favorite</mat-icon>
-      </div>
+      </button>
       <div class="tag">
         <app-tag class="best-seller" type='best-seller' *ngIf='bestSeller'></app-tag>
       </div>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="action">
-      <button class="action-button" (click)='$event.stopPropagation()' mat-raised-button color='primary' type="button">
+      <button class="action-button" (mousedown)='$event.stopPropagation();' (click)='$event.stopPropagation(); addToCart()' mat-raised-button color='primary' type="button">
         <mat-icon class='action-icon'>add_shopping_cart</mat-icon>Add to Cart
       </button>
     </div>

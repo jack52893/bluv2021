@@ -18,8 +18,10 @@
           <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
         </form>
         <!-- <input class="tablet-search-input" type="search"> -->
-        <button type="button" mat-icon-button>
-          <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
+        <button type="button" mat-icon-button routerLink="/cart">
+          <mat-icon *ngIf='cartItemsCount > 0' [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart
+          </mat-icon>
+          <mat-icon *ngIf='cartItemsCount <= 0 '>shopping_cart</mat-icon>
         </button>
 
         <button type='button' mat-icon-button>
