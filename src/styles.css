@@ -17,4 +17,6 @@ a {
   --primary-color: #2196f3;
   --accent-color: #ff4081;
   --warn-color: #f44336;
+  --tablet-border-radius: 15px;
+  --mobile-border-radius: 25px;
 }

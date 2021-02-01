@@ -1,7 +1,18 @@
-<mat-carousel [proportion]='50' [interval]='10000' [slides]='3'>
-  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
-    <a routerLink='/'>
-      <img class="image" [src]="deal.imageUrl">
+<mat-carousel *ngIf='!mobile' [proportion]='31' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide  matRipple *ngFor='let deal of deals$ | async'>
+    <a class='container' [routerLink]= 'deal.dealUrl'>
+      <div class='deal'>
+        <img class="image" [src]="deal.imageUrl">
+      </div>
+    </a>
+  </mat-carousel-slide>
+</mat-carousel>
+<mat-carousel *ngIf='mobile' [proportion]='50' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide  matRipple *ngFor='let deal of deals$ | async'>
+    <a class='container' [routerLink]='deal.dealUrl'>
+      <div class='deal'>
+        <img class="image" [src]="deal.imageUrl">
+      </div>
     </a>
   </mat-carousel-slide>
 </mat-carousel>

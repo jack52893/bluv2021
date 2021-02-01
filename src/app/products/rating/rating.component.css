@@ -1,5 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 mat-icon {
   color: gold;
+}
+
+.reviews{
+  margin-left: 5px;
+  display: inline-block;
+  margin-top: -3px;
 }
 
 @media (max-width: 599px) {

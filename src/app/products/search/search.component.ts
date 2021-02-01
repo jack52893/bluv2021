@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../product/product.model';
+import { Product } from '../product/service/product.model';
 import { ProductsService } from '../product/products.service';
 import { FilterComponent } from './filter/filter.component';
 

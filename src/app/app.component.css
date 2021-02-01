@@ -3,7 +3,33 @@ mat-sidenav-content,
 mat-sidenav {
   height: 100%;
 }
-
 mat-sidenav {
   width: 80%;
+}
+.dialog {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner mat-spinner {
+  margin: 0 auto;
+}
+
+@media(min-width: 600px) {
+  .spinner {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }

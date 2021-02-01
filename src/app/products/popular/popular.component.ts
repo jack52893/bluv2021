@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product/product.model';
-import { ProductsService } from '../product/products.service';
+import { Observable } from 'rxjs';
+import { Product } from '../product/service/product.model';
+import { PopularProductsService } from './service/popular-products.service';
 
 @Component({
   selector: 'app-popular',
@@ -8,11 +9,11 @@ import { ProductsService } from '../product/products.service';
   styleUrls: ['./popular.component.css'],
 })
 export class PopularComponent implements OnInit {
-  products: Product[];
+  popularProducts$: Observable<Product[]>;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private popularProductsService: PopularProductsService) {}
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts().slice(0, 12);
+    this.popularProducts$ = this.popularProductsService.getPopularProducts();
   }
 }
