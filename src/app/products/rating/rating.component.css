@@ -12,6 +12,7 @@ mat-icon {
   margin-left: 5px;
   display: inline-block;
   margin-top: -3px;
+  font-size: small;
 }
 
 @media (max-width: 599px) {

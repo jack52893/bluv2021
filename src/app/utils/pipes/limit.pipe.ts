@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'limit',
 })
 export class LimitPipe implements PipeTransform {
-  transform(value: string, limit: number = 50): string {
+  transform(value: string, limit: number = 110): string {
     if (value && value.length > limit) {
       return value.substr(0, limit) + '...';
     }

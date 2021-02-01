@@ -10,7 +10,9 @@ export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   @Input() favorite = false;
   @Input() rating = 5;
-  @Input() bestSeller = false;
+  @Input() reviews = 500;
+  @Input() bestSeller = true;
+  @Input() discount = 15;
 
   constructor() {}
 

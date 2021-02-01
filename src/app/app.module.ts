@@ -24,6 +24,7 @@ import { CategoryComponent } from './products/categories/category/category.compo
 import { MainCategoriesComponent } from './products/categories/main-categories/main-categories.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
+import { TagComponent } from './products/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ProductCardComponent } from './products/product-card/product-card.compo
     DealsComponent,
     ProductComponent,
     ProductCardComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,
