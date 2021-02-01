@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { filter, first, map, take } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
+import { Review } from '../review/service/review.model';
 import { ReviewService } from '../review/service/review.service';
 import { Product } from './service/product.model';
 import { ProductService } from './service/product.service';
@@ -12,17 +13,15 @@ import { ProductService } from './service/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit, OnDestroy {
+export class ProductComponent implements OnInit {
   product$: Observable<Product>;
   productImages$: Observable<string[]>;
+  reviews$: Observable<Review[]>;
   favorite = false;
   bestSeller = false;
   rating = 5;
-  reviews = [];
   relatedProducts: Product[];
   customersAlsoViewedProducts: Product[];
-
-  productSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,25 +30,16 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log('product.........');
-    // console.log('data     ', this.route.snapshot.data);
-    // this.route.data.subscribe((data) => console.log('resolv   ', data));
-    // this.product$ = this.route.data.pipe(
-    //   map((data: { product: Product }) => data.product as Product)
-    // );
-    // this.productImages$ = this.getProductImages();
-
-    // this.route.params.subscribe((params) => {
-    //   const id = params['id'];
-    //   this.product$ = this.productService.getProduct(id);
-
-    //   this.reviews = this.reviewsService.getReviews(id);
-    //   this.rating = this.reviewsService.getRating(id);
-    //   // this.relatedProducts = this.productService.getRelatedProducts(id);
-    //   // this.customersAlsoViewedProducts = this.productService.getCustomersAlsoViewedProducts(
-    //   //   id
-    //   // );
-    // });
+    this.product$ = this.route.data.pipe(map((data) => data.product));
+    this.productImages$ = this.getProductImages();
+    this.reviews$ = this.getProductReviews();
+  }
+  getProductReviews(): Observable<Review[]> {
+    return this.product$.pipe(
+      switchMap((product) => {
+        return this.reviewsService.getReviews(product.id);
+      })
+    );
   }
   getProductImages(): Observable<string[]> {
     return this.product$.pipe(
@@ -67,9 +57,5 @@ export class ProductComponent implements OnInit, OnDestroy {
         return images;
       })
     );
-  }
-
-  ngOnDestroy() {
-    this.product$ = undefined;
   }
 }

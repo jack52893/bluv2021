@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Utils } from 'src/app/utils/utils';
 import { Review } from './review.model';
 
 @Injectable({
@@ -49,8 +51,8 @@ export class ReviewService {
   ];
   constructor() {}
 
-  getReviews(id: string) {
-    return [...this.reviews];
+  getReviews(id: string): Observable<Review[]> {
+    return Utils.getObservable(this.reviews.slice());
   }
 
   getRating(id: string) {

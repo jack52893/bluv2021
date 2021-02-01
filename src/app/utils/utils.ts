@@ -24,7 +24,7 @@ export class Utils {
     });
     return promise;
   }
-  public static getObservable<T>(value: T, delay = true) {
+  public static getObservable<T>(value: T, delay = false) {
     const observable = new Observable<T>((observer) => {
       if (delay) {
         setTimeout(() => {

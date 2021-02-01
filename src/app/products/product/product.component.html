@@ -1,13 +1,14 @@
 <div class="container">
   <h1 class='title'>{{ (product$ | async)?.name }}</h1>
   <div class="highlight">
-    <!-- <div class="favorite" *ngIf='!favorite'>
-      <mat-icon color='primary'>favorite_border</mat-icon>
+    <div class="favorite">
+      <mat-icon color='primary' *ngIf='!favorite'>favorite_border</mat-icon>
+      <mat-icon color='primary' *ngIf='favorite'>favorite</mat-icon>
     </div>
-    <div class="favorite" *ngIf='favorite'>
-      <mat-icon color='primary'>favorite</mat-icon>
-    </div> -->
-    <div class="best-seller" *ngIf='bestSeller'><span>Best Seller</span></div>
+    <div class="tag">
+      <div class="best-seller" *ngIf='bestSeller'><span>Best Seller</span></div>
+    </div>
+
   </div>
   <img class="image" [src]="(product$ | async)?.imageUrl" [alt]="(product$ | async)?.name" #preview>
   <div class="images">
@@ -15,7 +16,7 @@
   </div>
   <div class="details">
     <div class="rating">
-      <app-rating [rating]='rating' [reviews]='reviews.length'></app-rating>
+      <app-rating [rating]='rating' [reviews]='(reviews$ | async)?.length'></app-rating>
     </div>
     <div class="price">
       <span>{{ (product$ | async)?.price + ' $'}}</span>
@@ -26,7 +27,7 @@
   </div>
   <h3 class="section-title">Customers reviews:</h3>
   <div class="reviews">
-    <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
+    <app-review class="review" *ngFor='let review of reviews$ | async' [review]='review'></app-review>
   </div>
   <h3 class="section-title">Related products:</h3>
   <!-- <div class="related-products">

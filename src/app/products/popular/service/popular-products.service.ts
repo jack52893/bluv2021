@@ -13,6 +13,6 @@ export class PopularProductsService {
   getPopularProducts(): Observable<Product[]> {
     return this.productService
       .getProducts()
-      .pipe(map((products) => products.slice(5, 20)));
+      .pipe(map((products) => products.slice(1, 20)));
   }
 }

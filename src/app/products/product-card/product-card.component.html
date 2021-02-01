@@ -17,16 +17,16 @@
         <span>{{ product.name }}</span>
       </div>
       <div class="details">
-        <!-- <div class="rating">
+        <div class="rating">
           <app-rating></app-rating>
-        </div> -->
+        </div>
         <div class="price">
           <span>{{ product.price + ' $'}}</span>
         </div>
       </div>
     </div>
     <div class="action">
-      <!-- <button mat-icon-button mat-raised-button color='primary' type="button"><mat-icon>add_shopping_cart</mat-icon></button> -->
+      <button class="action-button" (click)='$event.stopPropagation()' mat-raised-button color='primary' type="button"><mat-icon class='action-icon'>add_shopping_cart</mat-icon>Add to Cart</button>
     </div>
   </div>
 </div>
