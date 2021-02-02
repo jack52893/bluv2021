@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/service/cart.service';
 import { DiscountService } from '../discount/service/discount.service';
@@ -15,11 +16,13 @@ export class ProductCardComponent implements OnInit {
   @Input() reviews = 500;
   @Input() bestSeller = true;
   favorite: boolean = false;
+  limit: number = 50;
 
   constructor(
     private favoriteService: FavoriteService,
     private cartService: CartService,
-    private discountService: DiscountService
+    private discountService: DiscountService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +31,18 @@ export class ProductCardComponent implements OnInit {
         this.favorite = data.favorite;
       }
     });
+    this.breakpointObserver.observe(Breakpoints.XSmall).subscribe((data) => {
+      if (data.matches) {
+        this.limit = 50;
+      }
+    });
+    this.breakpointObserver
+      .observe(Breakpoints.HandsetLandscape)
+      .subscribe((data) => {
+        if (data.matches) {
+          this.limit = 40;
+        }
+      });
   }
 
   onFavorite() {
@@ -36,7 +51,7 @@ export class ProductCardComponent implements OnInit {
 
   addToCart() {
     this.discountService
-      .getPriceAfterDiscount(this.product.id, this.product.price)
+      .getPriceAfterDiscount(this.product.id)
       .subscribe((priceAfterDiscount) => {
         this.cartService.addToCart(
           this.product.id,

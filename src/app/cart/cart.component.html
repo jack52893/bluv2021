@@ -1,5 +1,5 @@
 <h3 class="title">Shopping Cart</h3>
-<div class="container" *ngIf='cartItems.length === 0'>
+<div class="container-empty" *ngIf='cartItems.length === 0'>
   Cart is empty!
 </div>
 <div class="container" *ngIf='cartItems.length > 0'>
@@ -7,7 +7,7 @@
     <img class='image' [src]="item.imageUrl" [alt]="item.name">
     <div class="details">
       <div class="name">
-        {{ item.name | limit }}
+        {{ item.name | limit: limit }}
       </div>
       <div class="quantity">
         <div class="control">
@@ -22,9 +22,9 @@
             <mat-icon>remove</mat-icon>
           </button>
         </div>
-        <div class="price">
-          <app-price [id]='item.id'></app-price>
-        </div>
+      </div>
+      <div class="price">
+        <app-price [id]='item.id'></app-price>
       </div>
     </div>
     <div class="button">
@@ -33,8 +33,23 @@
       </button>
     </div>
   </div>
+  <!-- <hr>
+  <div class="cupon">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Cupon" #input>
+    </mat-form-field>
+    <button mat-raised-button (click)='applyCupon(input.value)'>
+      <mat-icon>add</mat-icon> Apply Cupon
+    </button>
+  </div> -->
+  <hr>
   <div class="total">
-    <div class="caption">Total</div>
+    <div class="caption">Total:</div>
     <div class="value">{{ total + ' $' }}</div>
+  </div>
+  <div class='checkout'>
+    <button mat-raised-button type='button' color='primary'>
+      <mat-icon class="icon">checkout</mat-icon> Checkout
+    </button>
   </div>
 </div>

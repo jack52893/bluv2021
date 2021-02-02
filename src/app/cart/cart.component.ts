@@ -10,6 +10,7 @@ import { CartService } from './service/cart.service';
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   total: string;
+  limit = 50;
 
   constructor(private cartService: CartService) {}
 
@@ -39,5 +40,4 @@ export class CartComponent implements OnInit {
   onDelete(id: string) {
     this.cartService.deleteItem(id);
   }
-
 }

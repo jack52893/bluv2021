@@ -40,7 +40,7 @@
         <div><button class="title" routerLink="/" type="button" mat-button>Material 2021</button></div>
       </div>
       <div class="mobile-items">
-        <button type="button" mat-icon-button>
+        <button type="button" mat-icon-button routerLink='/cart'>
           <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
         </button>
         <button type="button" mat-icon-button>
@@ -50,7 +50,7 @@
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row class="mobile-row" *ngIf='mobile'>
-    <form class="mobile-search-form">
+    <!-- <form class="mobile-search-form" [formGroup]='form'>
       <mat-form-field floatLabel='never' class="mobile-search-field">
         <mat-icon class="mobile-search-icon" matSuffix>search</mat-icon>
         <mat-label class="mobile-search-label">Search</mat-label>
@@ -61,6 +61,6 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </form>
+    </form> -->
   </mat-toolbar-row>
 </mat-toolbar>
