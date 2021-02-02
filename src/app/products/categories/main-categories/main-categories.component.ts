@@ -1,6 +1,6 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { MainCategory } from '../main-category/service/main-category.model';
 import { MainCategoryService } from '../main-category/service/main-category.service';
 
@@ -10,9 +10,12 @@ import { MainCategoryService } from '../main-category/service/main-category.serv
   styleUrls: ['./main-categories.component.css'],
 })
 export class MainCategoriesComponent implements OnInit {
-  mainCategories$: Observable<MainCategory[]>;
+  mainCategories: MainCategory[];
 
-  constructor(private mainCategoryService: MainCategoryService) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private mainCategoryService: MainCategoryService
+  ) {}
 
   ngOnInit(): void {
     const mainCategory: MainCategory = {
@@ -21,9 +24,12 @@ export class MainCategoriesComponent implements OnInit {
       description: 'All Categories',
       imageUrl: '',
     };
-    this.mainCategories$ = this.mainCategoryService.getMainCategories().pipe(map((mainCategories: MainCategory[]) => {
-      mainCategories.push(mainCategory);
-      return mainCategories;
-    }));
+    this.mainCategoryService.getMainCategories().subscribe((mainCategories) => {
+      if(mainCategories.length > 3) {
+        this.mainCategories = mainCategories.slice(0, 4);
+      } else {
+        this.mainCategories = mainCategories;
+      }
+    });
   }
 }

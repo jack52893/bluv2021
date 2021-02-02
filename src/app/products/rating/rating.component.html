@@ -1,3 +1,5 @@
-<mat-icon class="star" *ngFor='let i of count; let index = index;'>{{ index <= rating ? 'star' : 'star_border'
-    }}</mat-icon>
-    <span class='reviews' *ngIf='reviews'> {{' ' + reviews }}</span>
+<div class='container'>
+  <mat-icon class="star" *ngFor='let i of count; let index = index;'>{{ index <= rating ? 'star' : 'star_border'
+      }}</mat-icon>
+      <div class='reviews' *ngIf='reviews'> {{' ' + reviews }}</div>
+</div>
