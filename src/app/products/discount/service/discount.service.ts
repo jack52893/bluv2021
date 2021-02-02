@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
 import { ProductService } from '../../product/service/product.service';
 import { discounts } from './discount.data';
@@ -9,13 +9,20 @@ import { discounts } from './discount.data';
 export class DiscountService {
   constructor(private productService: ProductService) {}
 
-  getPriceAfterDiscount(id: string, currentPrice: number): Observable<string> {
-    let newPrice = currentPrice;
-    const data = discounts.filter((product) => product.id === id);
-    if (data && data.length > 0) {
-      newPrice = ( 100 - data[0].discount) * currentPrice / 100;
-    }
-    return Utils.getObservable<string>(newPrice.toString());
+  getPriceAfterDiscount(id: string): Observable<string> {
+    return this.productService.getProduct(id).pipe(
+      switchMap((product) => {
+        const data = discounts.filter((product) => product.id === id);
+        let newPrice = product.price;
+        if (data && data.length > 0) {
+          newPrice = Math.floor(
+            ((100 - data[0].discount) * +product.price) /
+            100
+          ).toString();
+        }
+        return Utils.getObservable<string>(newPrice);
+      })
+    );
   }
 }
 

@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [] },
   {
     path: 'product/:id',
     component: ProductComponent,

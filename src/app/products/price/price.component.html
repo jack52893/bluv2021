@@ -1,0 +1,6 @@
+
+<div *ngIf='!discount'><span>{{ price + ' $'}}</span></div>
+<div *ngIf='discount'>
+  <del class='discount'>{{ price + ' $'}}</del>
+  <span>{{ (priceAfterDiscount | number : '1.0-0') + ' $' }} </span>
+</div>

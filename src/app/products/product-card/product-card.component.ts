@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { CartService } from 'src/app/cart/service/cart.service';
 import { DiscountService } from '../discount/service/discount.service';
 import { FavoriteService } from '../favorite/service/favorite.service';
@@ -16,31 +15,14 @@ export class ProductCardComponent implements OnInit {
   @Input() reviews = 500;
   @Input() bestSeller = true;
   favorite: boolean = false;
-  priceAfterDiscount: string;
-
-  discount = false;
 
   constructor(
     private favoriteService: FavoriteService,
-    private discountService: DiscountService,
-    private cartService: CartService
+    private cartService: CartService,
+    private discountService: DiscountService
   ) {}
 
   ngOnInit(): void {
-    if (this.product) {
-      this.discountService
-        .getPriceAfterDiscount(this.product.id, +this.product.price)
-        .pipe(
-          tap((price) => {
-            if (+price < +this.product.price) {
-              this.discount = true;
-            }
-          })
-        )
-        .subscribe((price) => {
-          this.priceAfterDiscount = price.toString();
-        });
-    }
     this.favoriteService.favoriteUpdated.subscribe((data) => {
       if (this.product.id === data.id) {
         this.favorite = data.favorite;
@@ -53,11 +35,15 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(
-      this.product.id,
-      this.product.name,
-      this.product.imageUrl,
-      this.product.price
-    );
+    this.discountService
+      .getPriceAfterDiscount(this.product.id, this.product.price)
+      .subscribe((priceAfterDiscount) => {
+        this.cartService.addToCart(
+          this.product.id,
+          this.product.name,
+          this.product.imageUrl,
+          priceAfterDiscount
+        );
+      });
   }
 }

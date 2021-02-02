@@ -19,11 +19,7 @@
           <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
         </div>
         <div class="price">
-          <div *ngIf='!discount'><span>{{ product.price + ' $'}}</span></div>
-          <div *ngIf='discount'>
-            <del class='discount'>{{ product.price + ' $'}}</del>
-            <span>{{ (priceAfterDiscount | number : '1.0-0') + ' $' }} </span>
-          </div>
+          <app-price [id]='product.id'></app-price>
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
 import { TagComponent } from './products/tag/tag.component';
 import { CartComponent } from './cart/cart.component';
+import { PriceComponent } from './products/price/price.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CartComponent } from './cart/cart.component';
     ProductComponent,
     ProductCardComponent,
     TagComponent,
-    CartComponent
+    CartComponent,
+    PriceComponent
   ],
   imports: [
     BrowserModule,

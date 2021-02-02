@@ -1,5 +1,70 @@
-
+.title {
+  font-size: large;
+  display: block;
+  text-align: center;
+  margin: 15px auto;
+}
+.container {
+  margin: 10px 200px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 20px;
+  width: 700px;
+}
 .image {
-  width:100px;
+  width: 100px;
   height: 100px;
+}
+.details {
+  margin-left: 10px;
+  width: 500px;
+}
+.quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 70%; */
+}
+.number {
+  width: 100px;
+  margin-right: 10px;
+}
+.number input {
+  text-align: center;
+}
+.button {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  margin-right: 50px;
+}
+.space {
+  width: 80%;
+  margin: 15px;
+
+}
+.total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 700px;
+  padding-right: 120px;
+  box-sizing: border-box;
+  font-size: large;
+}
+.caption {
+  margin: 0 50px;
 }

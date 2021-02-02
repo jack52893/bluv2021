@@ -52,8 +52,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.cartService.cartItemsUpdated.subscribe(count => {
-      this.cartItemsCount = count.length;
+    this.cartService.cartItemsUpdated.subscribe(cart => {
+      this.cartItemsCount =  cart.items.length;
     })
   }
 

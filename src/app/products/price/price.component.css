@@ -1,0 +1,10 @@
+.price {
+  font-size: 1.01rem;
+  text-align: right;
+  padding-right: 10px;
+}
+.discount {
+  font-weight: lighter;
+  margin:0px 10px;
+  text-decoration: line-through;
+}

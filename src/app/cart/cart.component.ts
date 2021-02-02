@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartItem } from './service/cart-item.model';
 import { CartService } from './service/cart.service';
 
@@ -9,26 +9,35 @@ import { CartService } from './service/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
+  total: string;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.cartItemsUpdated.subscribe((items) => {
-      this.cartItems = items;
+    this.cartService.cartItemsUpdated.subscribe((cart) => {
+      this.cartItems = cart.items;
+      this.total = cart.total.toString();
     });
   }
 
-  onAdd(item: CartItem) {
-    item.quantity = (+item.quantity + 1).toString();
+  onAdd(id: string) {
+    this.cartService.increaseQuantity(id, '1');
   }
 
-  onRemove(item: CartItem) {
-    if (+item.quantity > 1) {
-      item.quantity = (+item.quantity - 1).toString();
+  onChange(id: string, quantity: string) {
+    if(+quantity > 1) {
+      this.cartService.setQuantity(id, quantity);
+    }
+  }
+
+  onRemove(id: string, quantity: string) {
+    if (+quantity > 1) {
+      this.cartService.decreaseQuantity(id, '1');
     }
   }
 
   onDelete(id: string) {
     this.cartService.deleteItem(id);
   }
+
 }
