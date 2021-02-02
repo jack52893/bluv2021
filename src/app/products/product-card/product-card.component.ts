@@ -17,6 +17,7 @@ export class ProductCardComponent implements OnInit {
   @Input() bestSeller = true;
   favorite: boolean = false;
   limit: number = 50;
+  discount = false;
 
   constructor(
     private favoriteService: FavoriteService,
@@ -34,6 +35,13 @@ export class ProductCardComponent implements OnInit {
     this.breakpointObserver.observe(Breakpoints.XSmall).subscribe((data) => {
       if (data.matches) {
         this.limit = 50;
+      }
+    });
+    this.discountService.getDiscount(this.product.id).subscribe((discount) => {
+      if (+discount > 0) {
+        this.discount = true;
+      } else {
+        this.discount = false;
       }
     });
     this.breakpointObserver

@@ -9,6 +9,18 @@ import { discounts } from './discount.data';
 export class DiscountService {
   constructor(private productService: ProductService) {}
 
+  getDiscount(id: string): Observable<string> {
+    return this.productService.getProduct(id).pipe(
+      switchMap((product) => {
+        const data = discounts.filter((data) => data.id === product.id);
+        if (data && data.length > 0) {
+          return Utils.getObservable<string>(data[0].discount);
+        }
+        return Utils.getObservable<string>('0');
+      })
+    );
+  }
+
   getPriceAfterDiscount(id: string): Observable<string> {
     return this.productService.getProduct(id).pipe(
       switchMap((product) => {
@@ -16,8 +28,7 @@ export class DiscountService {
         let newPrice = product.price;
         if (data && data.length > 0) {
           newPrice = Math.floor(
-            ((100 - data[0].discount) * +product.price) /
-            100
+            ((100 - +data[0].discount) * +product.price) / 100
           ).toString();
         }
         return Utils.getObservable<string>(newPrice);
@@ -28,5 +39,5 @@ export class DiscountService {
 
 export interface DiscountData {
   id: string;
-  discount: number;
+  discount: string;
 }

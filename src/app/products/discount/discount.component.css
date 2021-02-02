@@ -1,0 +1,7 @@
+.discount {
+  color: var(--primary-color);
+  font-size: small;
+  font-weight: bold;
+  margin:0px 10px;
+  display: inline-block;
+}

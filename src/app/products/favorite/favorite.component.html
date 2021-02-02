@@ -1,0 +1,4 @@
+<button class="favorite" mat-icon-button (mousedown)='$event.stopPropagation();' (click)='$event.stopPropagation();onFavorite()'>
+  <mat-icon *ngIf='!favorite' color='primary'>favorite_border</mat-icon>
+  <mat-icon *ngIf='favorite' color='primary'>favorite</mat-icon>
+</button>

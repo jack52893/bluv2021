@@ -24,7 +24,7 @@
           <mat-icon *ngIf='cartItemsCount <= 0 '>shopping_cart</mat-icon>
         </button>
 
-        <button type='button' mat-icon-button>
+        <button type='button' mat-icon-button routerLink='/login'>
           <mat-icon>account_circle</mat-icon>
         </button>
       </div>
@@ -43,7 +43,7 @@
         <button type="button" mat-icon-button routerLink='/cart'>
           <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
         </button>
-        <button type="button" mat-icon-button>
+        <button type="button" mat-icon-button routerLink='/login'>
           <mat-icon>account_circle</mat-icon>
         </button>
       </div>

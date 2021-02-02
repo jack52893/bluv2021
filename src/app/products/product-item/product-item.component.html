@@ -1,18 +1,17 @@
 <div class="product">
   <div class="content">
     <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
-    <div class="caption">
+    <div class="details">
       <div class="title">
-        <span>{{ product.name | limit }}</span>
+        <span>{{ product.name | limit : 50 }}</span>
       </div>
-      <div class="details">
-        <div class="rating">
-          <app-rating [rating]='rating'></app-rating>
-        </div>
-        <div class="price">
-          <span>{{ product.price + ' $'}}</span>
-        </div>
+      <div class="rating">
+        <app-rating [rating]='rating' [reviews]='reviews'></app-rating>
       </div>
+      <div class='discount'>
+        <app-discount *ngIf='discount' [id]='product.id'></app-discount>
+      </div>
+      <app-price class="price" [id]='product.id'></app-price>
     </div>
   </div>
 </div>

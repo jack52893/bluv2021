@@ -27,6 +27,9 @@ import { ProductCardComponent } from './products/product-card/product-card.compo
 import { TagComponent } from './products/tag/tag.component';
 import { CartComponent } from './cart/cart.component';
 import { PriceComponent } from './products/price/price.component';
+import { ProductItemComponent } from './products/product-item/product-item.component';
+import { DiscountComponent } from './products/discount/discount.component';
+import { FavoriteComponent } from './products/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { PriceComponent } from './products/price/price.component';
     ProductCardComponent,
     TagComponent,
     CartComponent,
-    PriceComponent
+    PriceComponent,
+    ProductItemComponent,
+    DiscountComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,

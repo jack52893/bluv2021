@@ -1,10 +1,7 @@
 <div class="product">
   <div class="content">
     <div class="highlight">
-      <button class="favorite" mat-icon-button (mousedown)='$event.stopPropagation();' (click)='$event.stopPropagation();onFavorite()'>
-        <mat-icon *ngIf='!favorite' color='primary'>favorite_border</mat-icon>
-        <mat-icon *ngIf='favorite' color='primary'>favorite</mat-icon>
-      </button>
+      <app-favorite [id]='product.id' class='favorite'></app-favorite>
       <div class="tag">
         <app-tag class="best-seller" type='best-seller' *ngIf='bestSeller'></app-tag>
       </div>
@@ -17,6 +14,9 @@
       <div class="details">
         <div class="rating">
           <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
+        </div>
+        <div class="discount">
+          <app-discount *ngIf='discount' [id]='product.id'></app-discount>
         </div>
         <div class="price">
           <app-price [id]='product.id'></app-price>

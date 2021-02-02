@@ -76,6 +76,9 @@
   max-width: 100%;
   overflow: auto;
 }
+.related-products::-webkit-scrollbar {
+  display: none;
+}
 .product {
   min-width: 150px;
   max-width: 150px;

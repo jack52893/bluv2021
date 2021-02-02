@@ -19,7 +19,7 @@ mat-icon {
   mat-icon {
     display: inline-block;
     font-size: 16px;
-    margin: 0px -2px;
+    margin: 0px -4px;
   }
 }
 
@@ -27,5 +27,6 @@ mat-icon {
   mat-icon {
     display: inline-block;
     font-size: 20px;
+    margin: 0px -2px;
   }
 }
