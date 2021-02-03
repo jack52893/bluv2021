@@ -25,6 +25,7 @@
         {{ form.get('password').hasError('required') ? 'Password is required' : ''}}
       </mat-error>
     </mat-form-field>
+    <mat-checkbox formControlName='agree'>Agree to <a class='link' routerLink='/'>Terms and Conditions</a>.</mat-checkbox>
     <div class="submit">
       <button type="submit" [disabled]='form.invalid' color='primary' mat-raised-button>Submit</button>
     </div>

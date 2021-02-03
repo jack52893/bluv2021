@@ -1,37 +1,47 @@
 <div class="container">
-  <h1 class='title'>{{ product?.name }}</h1>
-  <div class="highlight">
-    <app-favorite [id]='product.id' class='favorite'></app-favorite>
-    <div class="tag">
-      <div class="best-seller" *ngIf='bestSeller'><span>Best Seller</span></div>
+  <div class="product">
+    <h1 class='title'>{{ product?.name }}</h1>
+    <div class="highlight">
+      <app-favorite [id]='product.id' class='favorite'></app-favorite>
+      <div class="tag">
+        <app-best-seller-tag class='best-seller' *ngIf='bestSeller'></app-best-seller-tag>
+      </div>
+    </div>
+    <img class="image" [src]="product?.imageUrl" [alt]="product?.name" #preview>
+    <div class="images">
+      <img matRipple *ngFor='let img of productImages' (click)="preview.src = img" [src]="img">
+    </div>
+    <div class="details">
+      <div class="rating">
+        <app-rating [rating]='rating' [reviews]='reviews?.length'></app-rating>
+      </div>
+      <div class='discount'>
+        <app-discount [id]='product.id' *ngIf='+priceAfterDiscount < +product.price'></app-discount>
+      </div>
+      <div class="price">
+        <app-price [id]='product.id'></app-price>
+      </div>
+    </div>
+    <div class="description">
+      <p>{{ product?.description }}</p>
     </div>
   </div>
-  <img class="image" [src]="product?.imageUrl" [alt]="product?.name" #preview>
-  <div class="images">
-    <img matRipple *ngFor='let img of productImages' (click)="preview.src = img" [src]="img">
-  </div>
-  <div class="details">
-    <div class="rating">
-      <app-rating [rating]='rating' [reviews]='reviews?.length'></app-rating>
+
+  <div class="related-sections">
+    <h3 class="section-title">Customers reviews:</h3>
+    <div class="reviews">
+      <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
     </div>
-    <div class="price">
-      <span>{{ product.price + ' $'}}</span>
+    <h3 class="section-title">Related products:</h3>
+    <div class="related-products">
+      <!-- <div style="width: 100px; height: 100px; display: block; background-color: red;"></div> -->
+      <!-- <app-product-card [product]='product'></app-product-card> -->
+      <!-- <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product-item"
+        *ngFor='let product of relatedProducts' [product]='product'></app-product-item> -->
     </div>
-  </div>
-  <div class="description">
-    <p>{{ product?.description }}</p>
-  </div>
-  <h3 class="section-title">Customers reviews:</h3>
-  <div class="reviews">
-    <app-review class="review" *ngFor='let review of reviews' [review]='review'></app-review>
-  </div>
-  <h3 class="section-title">Related products:</h3>
-  <div class="related-products">
-    <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product"
-      *ngFor='let product of relatedProducts' [product]='product'></app-product-item>
-  </div>
-  <!-- <h3 class="section-title">Customers also viewed:</h3>
+    <!-- <h3 class="section-title">Customers also viewed:</h3>
   <div class="customers-also-viewed-products">
     <app-product-item matRipple [routerLink]="'/product/' + product.id" class="product" *ngFor='let product of customersAlsoViewedProducts' [product]='product'></app-product-item>
   </div> -->
+  </div>
 </div>

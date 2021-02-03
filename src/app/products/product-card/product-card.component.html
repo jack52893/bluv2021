@@ -3,7 +3,7 @@
     <div class="highlight">
       <app-favorite [id]='product.id' class='favorite'></app-favorite>
       <div class="tag">
-        <app-tag class="best-seller" type='best-seller' *ngIf='bestSeller'></app-tag>
+        <app-best-seller-tag class='best-seller' *ngIf='bestSeller'></app-best-seller-tag>
       </div>
     </div>
     <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>

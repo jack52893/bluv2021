@@ -24,12 +24,14 @@ import { CategoryComponent } from './products/categories/category/category.compo
 import { MainCategoriesComponent } from './products/categories/main-categories/main-categories.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
-import { TagComponent } from './products/tag/tag.component';
 import { CartComponent } from './cart/cart.component';
 import { PriceComponent } from './products/price/price.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { DiscountComponent } from './products/discount/discount.component';
 import { FavoriteComponent } from './products/favorite/favorite.component';
+import { OrderConfirmationComponent } from './order/order-confirmation/order-confirmation.component';
+import { OrderSuccessComponent } from './order/order-success/order-success.component';
+import { BestSellerTagComponent } from './products/tags/best-seller-tag/best-seller-tag.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +52,14 @@ import { FavoriteComponent } from './products/favorite/favorite.component';
     DealsComponent,
     ProductComponent,
     ProductCardComponent,
-    TagComponent,
     CartComponent,
     PriceComponent,
     ProductItemComponent,
     DiscountComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    OrderConfirmationComponent,
+    OrderSuccessComponent,
+    BestSellerTagComponent
   ],
   imports: [
     BrowserModule,

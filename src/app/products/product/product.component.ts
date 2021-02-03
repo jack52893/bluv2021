@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
+import { DiscountService } from '../discount/service/discount.service';
 import { FavoriteService } from '../favorite/service/favorite.service';
 import { Review } from '../review/service/review.model';
 import { ReviewService } from '../review/service/review.service';
+import { BestSellerService } from '../tags/best-seller-tag/service/best-seller.service';
 import { Product } from './service/product.model';
 import { RelatedProductsService } from './service/related-products.service';
 
@@ -22,12 +24,15 @@ export class ProductComponent implements OnInit {
   rating = 5;
   relatedProducts: Product[];
   customersAlsoViewedProducts: Product[];
+  priceAfterDiscount: string;
 
   constructor(
     private route: ActivatedRoute,
     private reviewsService: ReviewService,
     private favoriteService: FavoriteService,
-    private relatedProductsService: RelatedProductsService
+    private relatedProductsService: RelatedProductsService,
+    private discountService: DiscountService,
+    private bestSellerService: BestSellerService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +41,10 @@ export class ProductComponent implements OnInit {
         switchMap((data) => {
           this.product = data.product;
           this.productImages = this.getProductImages();
+          return this.discountService.getPriceAfterDiscount(this.product.id);
+        }),
+        switchMap((priceAfterDiscount) => {
+          this.priceAfterDiscount = priceAfterDiscount;
           return this.reviewsService.getReviews(this.product.id);
         }),
         switchMap((reviews) => {
@@ -52,6 +61,11 @@ export class ProductComponent implements OnInit {
       if (this.product && this.product.id === data.id)
         this.favorite = data.favorite;
     });
+    this.bestSellerService
+      .getBestSeller(this.product.id)
+      .subscribe((bestSeller) => {
+        this.bestSeller = bestSeller;
+      });
   }
 
   getProductImages(): string[] {

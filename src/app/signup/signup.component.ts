@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
       ]),
+      agree: new FormControl('', [Validators.required]),
     });
   }
 

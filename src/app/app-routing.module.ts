@@ -4,6 +4,8 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OrderConfirmationComponent } from './order/order-confirmation/order-confirmation.component';
+import { OrderSuccessComponent } from './order/order-success/order-success.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductResolver } from './products/product/service/product.resolver';
 import { SearchComponent } from './products/search/search.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   { path: 'cart', component: CartComponent, canActivate: [] },
+  { path: 'confirmation', component: OrderConfirmationComponent },
+  { path: 'success', component: OrderSuccessComponent },
   {
     path: 'product/:id',
     component: ProductComponent,

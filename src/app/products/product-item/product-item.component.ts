@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DiscountService } from '../discount/service/discount.service';
 import { Product } from '../product/service/product.model';
 
 @Component({
@@ -14,15 +13,8 @@ export class ProductItemComponent implements OnInit {
   @Input() reviews = 500;
   @Input() bestSeller = false;
   discount: boolean = false;
-  constructor(private discountService: DiscountService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.discountService.getDiscount(this.product.id).subscribe((discount) => {
-      if (+discount > 0) {
-        this.discount = true;
-      } else {
-        this.discount = false;
-      }
-    });
   }
 }

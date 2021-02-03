@@ -1,5 +1,5 @@
 <div class="container-empty" *ngIf='cartItems.length === 0'>
-  Cart is empty!
+  Cart is empty.
 </div>
 <div class="container" *ngIf='cartItems.length > 0'>
   <div class="section">
@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class='checkout'>
-      <button mat-raised-button type='button' color='primary'>
+      <button mat-raised-button type='button' color='primary' routerLink='/confirmation'>
         <mat-icon class="icon">checkout</mat-icon> Checkout
       </button>
     </div>

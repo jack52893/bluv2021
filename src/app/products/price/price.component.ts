@@ -25,8 +25,7 @@ export class PriceComponent implements OnInit {
         switchMap((product) => {
           this.price = product.price;
           return this.discountService.getPriceAfterDiscount(
-            this.id,
-            +product.price
+            this.id
           );
         })
       )

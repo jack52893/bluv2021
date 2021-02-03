@@ -5,6 +5,7 @@ import { BreakpointService } from 'src/app/utils/ui/service/breakpoint.service';
 import { DiscountService } from '../discount/service/discount.service';
 import { FavoriteService } from '../favorite/service/favorite.service';
 import { Product } from '../product/service/product.model';
+import { BestSellerService } from '../tags/best-seller-tag/service/best-seller.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,7 +16,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   @Input() rating = 5;
   @Input() reviews = 500;
-  @Input() bestSeller = true;
+  bestSeller = false;
   favorite: boolean = false;
   discount = false;
   breakpoint: Breakpoint = 'xsmall';
@@ -24,6 +25,7 @@ export class ProductCardComponent implements OnInit {
     private favoriteService: FavoriteService,
     private cartService: CartService,
     private discountService: DiscountService,
+    private bestSellerService: BestSellerService,
     private breakpointService: BreakpointService
   ) {}
 
@@ -41,6 +43,12 @@ export class ProductCardComponent implements OnInit {
         this.discount = false;
       }
     });
+
+    this.bestSellerService
+      .getBestSeller(this.product.id)
+      .subscribe((bestSeller) => {
+        this.bestSeller = bestSeller;
+      });
 
     this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
       this.breakpoint = breakpoint;

@@ -1,8 +1,8 @@
 <div class="container">
-  <span class="name">{{ review.name }}</span>
-  <div>
-    <span class="title">{{ review.title}}</span>
+  <div class="section">
+    <div class="name">{{ review.name }}</div>
     <app-rating class="rating" [rating]='review.rating'></app-rating>
   </div>
+  <div class="title">{{ review.title}}</div>
   <p class="content">{{ review.content}}</p>
 </div>

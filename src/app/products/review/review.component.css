@@ -5,9 +5,16 @@
   align-items: flex-start;
   position: relative;
 }
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
 .title {
   font-weight: bold;
 }
 .rating {
-  margin-left: 10px;
+  align-self: flex-end;
 }
