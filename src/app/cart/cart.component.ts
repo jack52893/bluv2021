@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Coupon } from '../coupon/service/coupon.model';
 import { CouponService } from '../coupon/service/coupon.service';
 import { Breakpoint } from '../utils/ui/breakpoint.type';
@@ -11,13 +12,14 @@ import { CartService } from './service/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   cartItems: CartItem[] = [];
   coupons: Coupon[] = [];
   total: string;
   totalAfterDiscount: string;
   limit = 50;
   breakpoint: Breakpoint = 'xsmall';
+  subscriptions: Subscription[] = [];
 
   constructor(
     private cartService: CartService,
@@ -26,15 +28,19 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.cartItemsUpdated.subscribe((cart) => {
-      this.cartItems = cart.items;
-      this.total = cart.total.toString();
-      this.totalAfterDiscount = cart.totalAfterDiscount.toString();
-      this.coupons = cart.coupons;
-    });
-    this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
-      this.breakpoint = breakpoint;
-    });
+    this.subscriptions.push(
+      this.cartService.cartItemsUpdated.subscribe((cart) => {
+        this.cartItems = cart.items;
+        this.total = cart.total.toString();
+        this.totalAfterDiscount = cart.totalAfterDiscount.toString();
+        this.coupons = cart.coupons;
+      })
+    );
+    this.subscriptions.push(
+      this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+        this.breakpoint = breakpoint;
+      })
+    );
   }
 
   applyCoupon(coupon: string) {
@@ -62,5 +68,12 @@ export class CartComponent implements OnInit {
 
   onDelete(id: string) {
     this.cartService.deleteItem(id);
+  }
+
+  ngOnDestroy() {
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
   }
 }

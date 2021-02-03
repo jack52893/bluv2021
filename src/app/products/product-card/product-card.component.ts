@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/cart/service/cart.service';
 import { Breakpoint } from 'src/app/utils/ui/breakpoint.type';
 import { BreakpointService } from 'src/app/utils/ui/service/breakpoint.service';
@@ -12,7 +13,7 @@ import { BestSellerService } from '../tags/best-seller-tag/service/best-seller.s
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnInit, OnDestroy {
   @Input() product: Product;
   @Input() rating = 5;
   @Input() reviews = 500;
@@ -20,6 +21,7 @@ export class ProductCardComponent implements OnInit {
   favorite: boolean = false;
   discount = false;
   breakpoint: Breakpoint = 'xsmall';
+  subscriptions: Subscription[] = [];
 
   constructor(
     private favoriteService: FavoriteService,
@@ -30,29 +32,39 @@ export class ProductCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.favoriteService.favoriteUpdated.subscribe((data) => {
-      if (this.product.id === data.id) {
-        this.favorite = data.favorite;
-      }
-    });
+    this.subscriptions.push(
+      this.favoriteService.favoriteUpdated.subscribe((data) => {
+        if (this.product.id === data.id) {
+          this.favorite = data.favorite;
+        }
+      })
+    );
 
-    this.discountService.getDiscount(this.product.id).subscribe((discount) => {
-      if (+discount > 0) {
-        this.discount = true;
-      } else {
-        this.discount = false;
-      }
-    });
+    this.subscriptions.push(
+      this.discountService
+        .getDiscount(this.product.id)
+        .subscribe((discount) => {
+          if (+discount > 0) {
+            this.discount = true;
+          } else {
+            this.discount = false;
+          }
+        })
+    );
 
-    this.bestSellerService
-      .getBestSeller(this.product.id)
-      .subscribe((bestSeller) => {
-        this.bestSeller = bestSeller;
-      });
+    this.subscriptions.push(
+      this.bestSellerService
+        .getBestSeller(this.product.id)
+        .subscribe((bestSeller) => {
+          this.bestSeller = bestSeller;
+        })
+    );
 
-    this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
-      this.breakpoint = breakpoint;
-    });
+    this.subscriptions.push(
+      this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+        this.breakpoint = breakpoint;
+      })
+    );
   }
 
   onFavorite() {
@@ -71,5 +83,12 @@ export class ProductCardComponent implements OnInit {
           priceAfterDiscount
         );
       });
+  }
+
+  ngOnDestroy() {
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
   }
 }

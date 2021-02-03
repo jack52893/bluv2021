@@ -1,14 +1,41 @@
-<mat-carousel *ngIf='!mobile' [proportion]='31' [interval]='11000' [slides]='3'>
-  <mat-carousel-slide  matRipple *ngFor='let deal of deals$ | async'>
-    <a class='container' [routerLink]= 'deal.dealUrl'>
+<mat-carousel *ngIf="breakpoint === 'xsmall'" [proportion]='50' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
+    <a class='container' [routerLink]='deal.dealUrl'>
       <div class='deal'>
         <img class="image" [src]="deal.imageUrl">
       </div>
     </a>
   </mat-carousel-slide>
 </mat-carousel>
-<mat-carousel *ngIf='mobile' [proportion]='50' [interval]='11000' [slides]='3'>
-  <mat-carousel-slide  matRipple *ngFor='let deal of deals$ | async'>
+<mat-carousel *ngIf="breakpoint === 'small'" [proportion]='30' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
+    <a class='container' [routerLink]='deal.dealUrl'>
+      <div class='deal'>
+        <img class="image" [src]="deal.imageUrl">
+      </div>
+    </a>
+  </mat-carousel-slide>
+</mat-carousel>
+<mat-carousel *ngIf="breakpoint === 'medium'" [proportion]='30' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
+    <a class='container' [routerLink]='deal.dealUrl'>
+      <div class='deal'>
+        <img class="image" [src]="deal.imageUrl">
+      </div>
+    </a>
+  </mat-carousel-slide>
+</mat-carousel>
+<mat-carousel *ngIf="breakpoint === 'large'" [proportion]='30' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
+    <a class='container' [routerLink]='deal.dealUrl'>
+      <div class='deal'>
+        <img class="image" [src]="deal.imageUrl">
+      </div>
+    </a>
+  </mat-carousel-slide>
+</mat-carousel>
+<mat-carousel *ngIf="breakpoint === 'xlarge'" [proportion]='30' [interval]='11000' [slides]='3'>
+  <mat-carousel-slide matRipple *ngFor='let deal of deals'>
     <a class='container' [routerLink]='deal.dealUrl'>
       <div class='deal'>
         <img class="image" [src]="deal.imageUrl">

@@ -50,17 +50,17 @@
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row class="mobile-row" *ngIf='mobile'>
-    <!-- <form class="mobile-search-form" [formGroup]='form'>
-      <mat-form-field floatLabel='never' class="mobile-search-field">
-        <mat-icon class="mobile-search-icon" matSuffix>search</mat-icon>
-        <mat-label class="mobile-search-label">Search</mat-label>
-        <input type="search" aria-label="Search" matInput [formControl]="search" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form> -->
+    <form [formGroup]='form' (ngSubmit)='onSubmit()' class="tablet-search-form">
+      <input class='tablet-search-input' placeholder="Search" #trigger='matAutocompleteTrigger' type="text"
+        aria-label="Product" formControlName="search" [matAutocomplete]="auto"
+        (keydown.enter)='$event.preventDefault(); $event.target.blur(); trigger.closePanel(); onSubmit()'>
+      <mat-autocomplete (ngSubmit)='onSearch()' (optionActivated)='onOptionSelected($event.option.value)'
+        (optionSelected)='onOptionSelected($event.option.value)' #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
+    </form>
   </mat-toolbar-row>
 </mat-toolbar>

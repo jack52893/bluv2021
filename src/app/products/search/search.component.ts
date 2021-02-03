@@ -1,20 +1,22 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product/service/product.model';
 import { ProductsService } from '../product/products.service';
 import { FilterComponent } from './filter/filter.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   products: Product[];
   form: FormGroup;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -53,5 +55,12 @@ export class SearchComponent implements OnInit {
       height: height,
       width: width,
     });
+  }
+
+  ngOnDestroy() {
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
   }
 }

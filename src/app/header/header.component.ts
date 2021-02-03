@@ -11,6 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CartService } from '../cart/service/cart.service';
+import { Breakpoint } from '../utils/ui/breakpoint.type';
+import { BreakpointService } from '../utils/ui/service/breakpoint.service';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +21,12 @@ import { CartService } from '../cart/service/cart.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
-  mobile = true;
-  mobileSub: Subscription;
   cartItemsCount = null;
   form: FormGroup;
   options: string[] = [];
   filteredOptions: Observable<string[]>;
+  breakpoint: Breakpoint = 'xsmall';
+  subscriptions: Subscription[] = [];
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -35,26 +37,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private breakpointService: BreakpointService
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       search: new FormControl(),
     });
-    this.mobileSub = this.breakpointObserver
-      .observe(Breakpoints.XSmall)
-      .subscribe((match) => (this.mobile = match.matches));
-    this.mobile = this.breakpointObserver.isMatched(Breakpoints.XSmall);
     this.filteredOptions = this.form.get('search').valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.cartService.cartItemsUpdated.subscribe(cart => {
-      this.cartItemsCount =  cart.items.length;
-    })
+    this.subscriptions.push(
+      this.cartService.cartItemsUpdated.subscribe((cart) => {
+        this.cartItemsCount = cart.items.length;
+      })
+    );
+    this.subscriptions.push(
+      this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+        this.breakpoint = breakpoint;
+      })
+    );
   }
 
   onSubmit() {
@@ -78,9 +83,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.mobileSub) {
-      this.mobileSub.unsubscribe();
-      this.mobileSub = null;
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
     }
+    this.subscriptions = undefined;
   }
 }

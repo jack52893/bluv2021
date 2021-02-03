@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Utils } from 'src/app/utils/utils';
 import { DiscountService } from '../discount/service/discount.service';
@@ -15,7 +16,7 @@ import { RelatedProductsService } from './service/related-products.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   product: Product;
   productImages: string[];
   reviews: Review[];
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit {
   relatedProducts: Product[];
   customersAlsoViewedProducts: Product[];
   priceAfterDiscount: string;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -36,36 +38,44 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.data
-      .pipe(
-        switchMap((data) => {
-          this.product = data.product;
-          this.productImages = this.getProductImages();
-          return this.discountService.getPriceAfterDiscount(this.product.id);
-        }),
-        switchMap((priceAfterDiscount) => {
-          this.priceAfterDiscount = priceAfterDiscount;
-          return this.reviewsService.getReviews(this.product.id);
-        }),
-        switchMap((reviews) => {
-          this.reviews = reviews;
-          return this.relatedProductsService.getRelatedProducts(
-            this.product.id
-          );
+    this.subscriptions.push(
+      this.route.data
+        .pipe(
+          switchMap((data) => {
+            this.product = data.product;
+            this.productImages = this.getProductImages();
+            return this.discountService.getPriceAfterDiscount(this.product.id);
+          }),
+          switchMap((priceAfterDiscount) => {
+            this.priceAfterDiscount = priceAfterDiscount;
+            return this.reviewsService.getReviews(this.product.id);
+          }),
+          switchMap((reviews) => {
+            this.reviews = reviews;
+            return this.relatedProductsService.getRelatedProducts(
+              this.product.id
+            );
+          })
+        )
+        .subscribe((relatedProducts) => {
+          this.relatedProducts = relatedProducts;
         })
-      )
-      .subscribe((relatedProducts) => {
-        this.relatedProducts = relatedProducts;
-      });
-    this.favoriteService.favoriteUpdated.subscribe((data) => {
-      if (this.product && this.product.id === data.id)
-        this.favorite = data.favorite;
-    });
-    this.bestSellerService
-      .getBestSeller(this.product.id)
-      .subscribe((bestSeller) => {
-        this.bestSeller = bestSeller;
-      });
+    );
+
+    this.subscriptions.push(
+      this.favoriteService.favoriteUpdated.subscribe((data) => {
+        if (this.product && this.product.id === data.id)
+          this.favorite = data.favorite;
+      })
+    );
+
+    this.subscriptions.push(
+      this.bestSellerService
+        .getBestSeller(this.product.id)
+        .subscribe((bestSeller) => {
+          this.bestSeller = bestSeller;
+        })
+    );
   }
 
   getProductImages(): string[] {
@@ -84,5 +94,12 @@ export class ProductComponent implements OnInit {
 
   onFavorite() {
     this.favoriteService.favorite(this.product.id);
+  }
+
+  ngOnDestroy() {
+    for (let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
   }
 }

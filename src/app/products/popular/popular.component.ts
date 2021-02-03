@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from '../product/service/product.model';
 import { PopularProductsService } from './service/popular-products.service';
 
@@ -8,12 +8,24 @@ import { PopularProductsService } from './service/popular-products.service';
   templateUrl: './popular.component.html',
   styleUrls: ['./popular.component.css'],
 })
-export class PopularComponent implements OnInit {
-  popularProducts$: Observable<Product[]>;
+export class PopularComponent implements OnInit, OnDestroy {
+  popularProducts: Product[];
+  subscriptions: Subscription[] = [];
 
   constructor(private popularProductsService: PopularProductsService) {}
 
   ngOnInit(): void {
-    this.popularProducts$ = this.popularProductsService.getPopularProducts();
+    this.subscriptions.push(
+      this.popularProductsService.getPopularProducts().subscribe((products) => {
+        this.popularProducts = products;
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
   }
 }

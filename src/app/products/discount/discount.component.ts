@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DiscountService } from './service/discount.service';
 
 @Component({
@@ -6,15 +7,26 @@ import { DiscountService } from './service/discount.service';
   templateUrl: './discount.component.html',
   styleUrls: ['./discount.component.css'],
 })
-export class DiscountComponent implements OnInit {
+export class DiscountComponent implements OnInit, OnDestroy {
   @Input() id: string;
   discount: string;
+  subscriptions: Subscription[] = [];
 
   constructor(private discountService: DiscountService) {}
 
   ngOnInit(): void {
-    this.discountService.getDiscount(this.id).subscribe((discount) => {
-      this.discount = discount;
-    });
+    this.subscriptions.push(
+      this.discountService.getDiscount(this.id).subscribe((discount) => {
+        this.discount = discount;
+      })
+    );
   }
+
+  ngOnDestroy() {
+    for(let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+    this.subscriptions = undefined;
+  }
+
 }
