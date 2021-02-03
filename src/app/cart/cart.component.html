@@ -4,48 +4,65 @@
 </div>
 <div class="container" *ngIf='cartItems.length > 0'>
   <div class="item" *ngFor='let item of cartItems'>
-    <img class='image' [src]="item.imageUrl" [alt]="item.name">
+    <div class="name" [routerLink]="'/product/' + item.id">
+      {{ item.name | limit: limit }}
+    </div>
     <div class="details">
-      <div class="name">
-        {{ item.name | limit: limit }}
-      </div>
+      <img class='image' [src]="item.imageUrl" [alt]="item.name" [routerLink]="'/product/' + item.id">
       <div class="quantity">
-        <div class="control">
+        <div class='controls'>
           <mat-form-field class="number">
             <input type="number" (input)='onChange(item.id, $event.target.value)' matInput [value]='item.quantity'
               min="1">
           </mat-form-field>
-          <button mat-icon-button color='primary' type="button" (click)='onAdd(item.id)'>
-            <mat-icon>add</mat-icon>
-          </button>
-          <button mat-icon-button color='primary' type="button" (click)='onRemove(item.id, item.quantity)'>
-            <mat-icon>remove</mat-icon>
-          </button>
+          <div class="buttons">
+            <button mat-icon-button color='primary' type="button" (click)='onAdd(item.id)'>
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button color='primary' type="button" (click)='onRemove(item.id, item.quantity)'>
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="price">
+          <app-discount *ngIf='+item.priceAfterDiscount < +item.price' class='discount' [id]='item.id'></app-discount>
+          <app-price [id]='item.id'></app-price>
         </div>
       </div>
-      <div class="price">
-        <app-price [id]='item.id'></app-price>
+      <div class="button">
+        <button mat-icon-button color='warn' (click)='onDelete(item.id)'>
+          <mat-icon>clear</mat-icon>
+        </button>
       </div>
     </div>
-    <div class="button">
-      <button mat-icon-button color='warn' (click)='onDelete(item.id)'>
-        <mat-icon>clear</mat-icon>
+  </div>
+  <hr>
+  <!-- <div class="coupons-section">
+    <div class='coupons'>
+      <div class='coupon' *ngFor='let coupon of coupons'>
+        <div class='coupon-title'> Coupon </div>
+        <div class='coupon-value'>{{ '- ' + coupon.value + ' %'}}</div>
+        <button mat-icon-button (click)='removeCoupon(coupon)'>
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class='coupon-controls'>
+      <mat-form-field class='coupon-text'>
+        <input matInput type="text" placeholder="Coupon" #input>
+      </mat-form-field>
+      <button class='coupon-button' mat-raised-button (click)='applyCoupon(input.value)'>
+        <mat-icon>add</mat-icon> Apply Coupon
       </button>
     </div>
   </div>
-  <!-- <hr>
-  <div class="cupon">
-    <mat-form-field>
-      <input matInput type="text" placeholder="Cupon" #input>
-    </mat-form-field>
-    <button mat-raised-button (click)='applyCupon(input.value)'>
-      <mat-icon>add</mat-icon> Apply Cupon
-    </button>
-  </div> -->
-  <hr>
+  <hr> -->
   <div class="total">
     <div class="caption">Total:</div>
-    <div class="value">{{ total + ' $' }}</div>
+    <div class='content'>
+      <div>{{ totalAfterDiscount + ' $' }}</div>
+      <div class="value">{{ total + ' $' }}</div>
+    </div>
   </div>
   <div class='checkout'>
     <button mat-raised-button type='button' color='primary'>

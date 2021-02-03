@@ -7,26 +7,26 @@
       </div>
     </div>
     <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
-    <div class="caption">
-      <div class="title">
-        <span>{{ product.name | limit }}</span>
+    <div class="details">
+      <div class='name' *ngIf="breakpoint === 'xsmall'">{{ product.name | limit : 100 }}</div>
+      <div class='name' *ngIf="breakpoint === 'small'">{{ product.name | limit : 130 }}</div>
+      <div class='name' *ngIf="breakpoint === 'medium'">{{ product.name | limit : 100 }}</div>
+      <div class='name' *ngIf="breakpoint === 'large'">{{ product.name | limit : 100 }}</div>
+      <div class='name' *ngIf="breakpoint === 'xlarge'">{{ product.name | limit : 120 }}</div>
+      <div class="rating">
+        <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
       </div>
-      <div class="details">
-        <div class="rating">
-          <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
-        </div>
-        <div class="discount">
-          <app-discount *ngIf='discount' [id]='product.id'></app-discount>
-        </div>
-        <div class="price">
-          <app-price [id]='product.id'></app-price>
-        </div>
+      <div class="discount">
+        <app-discount *ngIf='discount' [id]='product.id'></app-discount>
       </div>
-    </div>
-    <div class="action">
-      <button class="action-button" (mousedown)='$event.stopPropagation();' (click)='$event.stopPropagation(); addToCart()' mat-raised-button color='primary' type="button">
-        <mat-icon class='action-icon'>add_shopping_cart</mat-icon>Add to Cart
-      </button>
+      <div class="price">
+        <app-price [id]='product.id'></app-price>
+      </div>
+      <div class="action">
+        <button class="action-button" (mousedown)='$event.stopPropagation();'
+          (click)='$event.stopPropagation(); addToCart()' mat-raised-button color='primary' type="button">
+          <mat-icon class='action-icon'>add_shopping_cart</mat-icon>Add to Cart
+        </button>
+      </div>
     </div>
   </div>
-</div>

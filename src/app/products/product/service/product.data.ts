@@ -17,7 +17,7 @@ export const products: Product[] = [
   {
     id: '31404ae6-de5a-4ecd-b668-a641d45aab26',
     name:
-      'Samsung Galaxy S20 FE G780F 128GB Dual Sim GSM Unlocked Android Smart Phone (Latin America Variant/US Compatible LTE) - Cloud Red',
+      'Samsung Galaxy S20 FE G780F 128GB Dual Sim GSM Unlocked Android Smart Phone (Latin America Variant/US Compatible LTE) - Cloud RedSamsung Galaxy S20 FE G780F 128GB Dual Sim GSM Unlocked Android Smart Phone (Latin America Variant/US Compatible LTE) - Cloud Red',
     description: '',
     price: '800',
     // imageUrl: 'assets/images/products/product-2.jpg',
@@ -26,7 +26,7 @@ export const products: Product[] = [
   },
   {
     id: 'b3f2b00a-f9ec-43ca-b510-e9f2ac4da7c5',
-    name: 'SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone',
+    name: 'SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone',
     description: '',
     price: '850',
     // imageUrl: 'assets/images/products/product-7.jpg',

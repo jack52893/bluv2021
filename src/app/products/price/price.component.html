@@ -1,5 +1,8 @@
-<div *ngIf='!discount'><span>{{ price + ' $'}}</span></div>
-<div *ngIf='discount'>
-  <span>{{ (priceAfterDiscount | number : '1.0-0') + ' $' }} </span>
-  <del class='discount'>{{ price + ' $'}}</del>
+<div class='container'>
+  <div class='price' *ngIf='!discount'><div>{{ price + ' $'}}</div></div>
+  <div *ngIf='discount' class='price'>
+    <span>{{ (priceAfterDiscount | number : '1.0-0') + ' $' }} </span>
+    <del class='discount'>{{ price + ' $'}}</del>
+  </div>
 </div>
+

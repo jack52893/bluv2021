@@ -1,10 +1,12 @@
-.price {
-  font-size: 1.01rem;
-  text-align: right;
-  padding-right: 10px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
+
 .discount {
   font-weight: lighter;
-  margin:0px 10px;
   text-decoration: line-through;
 }

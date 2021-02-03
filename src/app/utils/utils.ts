@@ -36,4 +36,7 @@ export class Utils {
     });
     return observable;
   }
+  public static getValueForPercentage(value: number, percentage: number): number {
+    return Math.floor(((100 - +percentage) * +value) / 100);
+  }
 }

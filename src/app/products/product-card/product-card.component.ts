@@ -1,6 +1,7 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/service/cart.service';
+import { Breakpoint } from 'src/app/utils/ui/breakpoint.type';
+import { BreakpointService } from 'src/app/utils/ui/service/breakpoint.service';
 import { DiscountService } from '../discount/service/discount.service';
 import { FavoriteService } from '../favorite/service/favorite.service';
 import { Product } from '../product/service/product.model';
@@ -16,14 +17,14 @@ export class ProductCardComponent implements OnInit {
   @Input() reviews = 500;
   @Input() bestSeller = true;
   favorite: boolean = false;
-  limit: number = 50;
   discount = false;
+  breakpoint: Breakpoint = 'xsmall';
 
   constructor(
     private favoriteService: FavoriteService,
     private cartService: CartService,
     private discountService: DiscountService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointService: BreakpointService
   ) {}
 
   ngOnInit(): void {
@@ -32,11 +33,7 @@ export class ProductCardComponent implements OnInit {
         this.favorite = data.favorite;
       }
     });
-    this.breakpointObserver.observe(Breakpoints.XSmall).subscribe((data) => {
-      if (data.matches) {
-        this.limit = 50;
-      }
-    });
+
     this.discountService.getDiscount(this.product.id).subscribe((discount) => {
       if (+discount > 0) {
         this.discount = true;
@@ -44,13 +41,10 @@ export class ProductCardComponent implements OnInit {
         this.discount = false;
       }
     });
-    this.breakpointObserver
-      .observe(Breakpoints.HandsetLandscape)
-      .subscribe((data) => {
-        if (data.matches) {
-          this.limit = 40;
-        }
-      });
+
+    this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+      this.breakpoint = breakpoint;
+    });
   }
 
   onFavorite() {
@@ -65,6 +59,7 @@ export class ProductCardComponent implements OnInit {
           this.product.id,
           this.product.name,
           this.product.imageUrl,
+          this.product.price,
           priceAfterDiscount
         );
       });
