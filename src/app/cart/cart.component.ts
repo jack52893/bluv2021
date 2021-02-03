@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Coupon } from '../coupon/service/coupon.model';
 import { CouponService } from '../coupon/service/coupon.service';
+import { Breakpoint } from '../utils/ui/breakpoint.type';
+import { BreakpointService } from '../utils/ui/service/breakpoint.service';
 import { CartItem } from './service/cart-item.model';
 import { CartService } from './service/cart.service';
 
@@ -15,10 +17,12 @@ export class CartComponent implements OnInit {
   total: string;
   totalAfterDiscount: string;
   limit = 50;
+  breakpoint: Breakpoint = 'xsmall';
 
   constructor(
     private cartService: CartService,
-    private couponService: CouponService
+    private couponService: CouponService,
+    private breakpointService: BreakpointService
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +31,9 @@ export class CartComponent implements OnInit {
       this.total = cart.total.toString();
       this.totalAfterDiscount = cart.totalAfterDiscount.toString();
       this.coupons = cart.coupons;
+    });
+    this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+      this.breakpoint = breakpoint;
     });
   }
 

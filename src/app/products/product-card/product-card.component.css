@@ -1,8 +1,8 @@
 @media (max-width: 599.98px) {
   .product {
     display: block;
-    border-radius: 15px;
-    box-shadow: 1px 1px rgb(227, 227, 253);
+    border-radius: 4px;
+    cursor: pointer;
     min-width: 100%;
     min-height: 100%;
     position: relative;
@@ -94,7 +94,7 @@
     margin: 0 2px;
   }
   .action-button {
-    border-radius: 15px;
+    border-radius: 4px;
   }
   .action-icon {
     margin: 0px 5px;
@@ -104,8 +104,8 @@
 @media (min-width: 600px) and (max-width: 959.98px) {
   .product {
     display: block;
-    border-radius: 15px;
-    box-shadow: 1px 1px rgb(227, 227, 253);
+    border-radius: 4px;
+    cursor: pointer;
     min-width: 100%;
     min-height: 100%;
     position: relative;
@@ -196,7 +196,7 @@
     margin: 0 2px;
   }
   .action-button {
-    border-radius: 15px;
+    border-radius: 4px;
   }
   .action-icon {
     margin: 0px 5px;
@@ -209,8 +209,8 @@
   }
   .product {
     display: block;
-    border-radius: 15px;
-    box-shadow: 1px 1px rgb(227, 227, 253);
+    border-radius: 4px;
+    cursor: pointer;
     min-width: 100%;
     min-height: 100%;
     position: relative;
@@ -301,7 +301,7 @@
     margin: 0 2px;
   }
   .action-button {
-    border-radius: 15px;
+    border-radius: 4px;
   }
   .action-icon {
     margin: 0px 5px;
@@ -314,8 +314,8 @@
   }
   .product {
     display: block;
-    border-radius: 15px;
-    box-shadow: 1px 1px rgb(227, 227, 253);
+    border-radius: 4px;
+    cursor: pointer;
     min-width: 100%;
     min-height: 100%;
     position: relative;
@@ -406,7 +406,7 @@
     margin: 0 2px;
   }
   .action-button {
-    border-radius: 15px;
+    border-radius: 4px;
   }
   .action-icon {
     margin: 0px 5px;
@@ -419,8 +419,8 @@
   }
   .product {
     display: block;
-    border-radius: 15px;
-    box-shadow: 1px 1px rgb(227, 227, 253);
+    border-radius: 4px;
+    cursor: pointer;
     min-width: 100%;
     min-height: 100%;
     position: relative;
@@ -512,7 +512,7 @@
     margin: 0 2px;
   }
   .action-button {
-    border-radius: 15px;
+    border-radius: 4px;
   }
   .action-icon {
     margin: 0px 5px;
