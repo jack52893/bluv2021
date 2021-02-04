@@ -1,3 +1,10 @@
 .container {
-  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  margin: 50px;
+  font-size: medium;
 }

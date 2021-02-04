@@ -10,11 +10,18 @@ export class FavoriteService {
     favorite: false,
   });
   favorite(id: string) {
-    const data = favoriteProducts.filter((product) => product.id === id);
-    if (data && data.length > 0) {
-      data[0].favorite = !data[0].favorite;
-      this.favoriteUpdated.next({ id: id, favorite: data[0].favorite });
+    const item = favoriteProducts.find((product) => product.id === id);
+    if (item) {
+      item.favorite = !item.favorite;
+      this.favoriteUpdated.next({ id: id, favorite: item.favorite });
     }
+  }
+  getFavorite(id: string): Observable<boolean> {
+    const item = favoriteProducts.find(product => product.id === id);
+    if(item) {
+      return Utils.getObservable<boolean>(item.favorite);
+    }
+    return Utils.getObservable<boolean>(false);
   }
 }
 

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="highlight">
-    <app-favorite [id]='product.id' class='favorite'></app-favorite>
+    <!-- <app-favorite [id]='product.id' class='favorite'></app-favorite> -->
     <div class="tag">
-      <app-best-seller-tag class='best-seller' *ngIf='bestSeller'></app-best-seller-tag>
+      <app-best-seller-tag class='best-seller' [size]="'xsmall'" *ngIf='bestSeller'></app-best-seller-tag>
     </div>
   </div>
   <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
   <div class="details">
-    <div class='name' *ngIf="breakpoint === 'xsmall'">{{ product.name | limit : 100 }}</div>
+    <div class='name' *ngIf="breakpoint === 'xsmall'">{{ product.name | limit : 60 }}</div>
     <div class='name' *ngIf="breakpoint === 'small'">{{ product.name | limit : 100 }}</div>
     <div class='name' *ngIf="breakpoint === 'medium'">{{ product.name | limit : 100 }}</div>
     <div class='name' *ngIf="breakpoint === 'large'">{{ product.name | limit : 100 }}</div>
@@ -21,8 +21,8 @@
     <div class="price">
       <app-price [id]='product.id'></app-price>
     </div>
-    <div class="action">
+    <!-- <div class="action">
       <app-add-to-cart-button [id]='product.id'></app-add-to-cart-button>
-    </div>
+    </div> -->
   </div>
 </div>

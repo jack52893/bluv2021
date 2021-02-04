@@ -8,8 +8,11 @@ import { FavoriteService } from '../favorite/service/favorite.service';
 import { Review } from '../review/service/review.model';
 import { ReviewService } from '../review/service/review.service';
 import { BestSellerService } from '../tags/best-seller-tag/service/best-seller.service';
+import { CustomersViewedProductsService } from './service/customers-viewed-products.service';
 import { Product } from './service/product.model';
+import { RecommendedProductsService } from './service/recommended-products.service';
 import { RelatedProductsService } from './service/related-products.service';
+import { ViewedProductsService } from './service/viewed-products.service';
 
 @Component({
   selector: 'app-product',
@@ -24,7 +27,10 @@ export class ProductComponent implements OnInit, OnDestroy {
   bestSeller = false;
   rating = 5;
   relatedProducts: Product[];
-  customersAlsoViewedProducts: Product[];
+  customersViewedProducts: Product[];
+  recommendedProducts: Product[];
+  viewedProducts: Product[];
+
   priceAfterDiscount: string;
   subscriptions: Subscription[] = [];
 
@@ -32,9 +38,12 @@ export class ProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private reviewsService: ReviewService,
     private favoriteService: FavoriteService,
-    private relatedProductsService: RelatedProductsService,
     private discountService: DiscountService,
-    private bestSellerService: BestSellerService
+    private bestSellerService: BestSellerService,
+    private relatedProductsService: RelatedProductsService,
+    private customersViewedProductsService: CustomersViewedProductsService,
+    private recommendedProductsService: RecommendedProductsService,
+    private viewedProductsService: ViewedProductsService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +57,14 @@ export class ProductComponent implements OnInit, OnDestroy {
           }),
           switchMap((priceAfterDiscount) => {
             this.priceAfterDiscount = priceAfterDiscount;
+            return this.favoriteService.getFavorite(this.product.id);
+          }),
+          switchMap((favorite) => {
+            this.favorite = favorite;
+            return this.bestSellerService.getBestSeller(this.product.id);
+          }),
+          switchMap((bestSeller) => {
+            this.bestSeller = bestSeller;
             return this.reviewsService.getReviews(this.product.id);
           }),
           switchMap((reviews) => {
@@ -55,10 +72,28 @@ export class ProductComponent implements OnInit, OnDestroy {
             return this.relatedProductsService.getRelatedProducts(
               this.product.id
             );
+          }),
+          switchMap((relatedProducts) => {
+            this.relatedProducts = relatedProducts;
+            return this.customersViewedProductsService.getCustomersViewedProducts(
+              this.product.id
+            );
+          }),
+          switchMap((customersViewedProducts) => {
+            this.customersViewedProducts = customersViewedProducts;
+            return this.recommendedProductsService.getRecommendedProducts(
+              this.product.id
+            );
+          }),
+          switchMap((recommendedProducts) => {
+            this.recommendedProducts = recommendedProducts;
+            return this.viewedProductsService.getViewedProducts(
+              this.product.id
+            );
           })
         )
-        .subscribe((relatedProducts) => {
-          this.relatedProducts = relatedProducts;
+        .subscribe((viewedProducts) => {
+          this.viewedProducts = viewedProducts;
         })
     );
 

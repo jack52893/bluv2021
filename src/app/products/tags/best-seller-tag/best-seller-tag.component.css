@@ -1,8 +1,22 @@
-.title {
+.tag {
   display: inline-block;
   background-color: var(--primary-color);
   color: white;
   border-radius: 3px;
   padding:0px 5px;
-  font-size: smaller;
+}
+.xsmall {
+  font-size: x-small;
+}
+.small {
+  font-size: small;
+}
+.medium {
+  font-size: medium;
+}
+.large {
+  font-size: large;
+}
+.xlarge {
+  font-size: x-large;
 }

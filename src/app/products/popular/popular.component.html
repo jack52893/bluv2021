@@ -1,3 +1,3 @@
-<app-product-card matRipple class='product mat-card' *ngFor='let product of popularProducts$ | async' [product]='product'
+<app-product-card matRipple class='product mat-card' *ngFor='let product of popularProducts' [product]='product'
   [routerLink]="'/product/' + product.id">
 </app-product-card>

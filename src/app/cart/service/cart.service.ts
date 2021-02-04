@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Coupon } from 'src/app/coupon/service/coupon.model';
 import { CouponService } from 'src/app/coupon/service/coupon.service';
+import { DiscountService } from 'src/app/products/discount/service/discount.service';
+import { Product } from 'src/app/products/product/service/product.model';
+import { ProductService } from 'src/app/products/product/service/product.service';
 import { Utils } from 'src/app/utils/utils';
 import { CartItem } from './cart-item.model';
 import { Cart } from './cart.model';
@@ -49,7 +53,11 @@ export class CartService {
     coupons: this.coupons,
   });
 
-  constructor(private couponService: CouponService) {}
+  constructor(
+    private couponService: CouponService,
+    private productService: ProductService,
+    private discountService: DiscountService
+  ) {}
 
   applyCoupon(coupon: string) {
     const data = this.coupons.filter((item) => item.coupon === coupon);
@@ -57,7 +65,9 @@ export class CartService {
       this.couponService.getCouponValue(coupon).subscribe((value) => {
         if (+value > 0) {
           this.coupons.push({ coupon: coupon, value: value });
-          this.totalAfterDiscount = this.totalAfterDiscount - Utils.getValueForPercentage(this.totalAfterDiscount, +value);
+          this.totalAfterDiscount =
+            this.totalAfterDiscount -
+            Utils.getValueForPercentage(this.totalAfterDiscount, +value);
           if (this.totalAfterDiscount < 0) {
             this.totalAfterDiscount = 0;
           }
@@ -73,10 +83,12 @@ export class CartService {
   }
 
   removeCoupon(coupon: string) {
-    const data = this.coupons.filter((item) => item.coupon === coupon);
-    if (data && data.length > 0) {
+    const item = this.coupons.find((item) => item.coupon === coupon);
+    if (item) {
       this.coupons = this.coupons.filter((item) => item.coupon !== coupon);
-      this.totalAfterDiscount = this.totalAfterDiscount + Utils.getValueForPercentage(this.totalAfterDiscount, +data[0].value);
+      this.totalAfterDiscount =
+        this.totalAfterDiscount +
+        Utils.getValueForPercentage(this.totalAfterDiscount, +item.value);
       this.cartItemsUpdated.next({
         totalAfterDiscount: this.totalAfterDiscount,
         total: this.total,
@@ -86,34 +98,40 @@ export class CartService {
     }
   }
 
-  addToCart(
-    id: string,
-    name: string,
-    imageUrl: string,
-    price: string,
-    priceAfterDiscount: string,
-    quantity: string = '1'
-  ) {
-    const data = this.items.filter((item) => item.id === id);
-    if (data && data.length > 0) {
-      data[0].quantity = (+data[0].quantity + 1).toString();
-    } else {
-      this.items.push({
-        id: id,
-        name: name,
-        price: price,
-        priceAfterDiscount: priceAfterDiscount,
-        imageUrl: imageUrl,
-        quantity: quantity,
+  addToCart(id: string, quantity: string = '1') {
+    let product: Product = null;
+    this.productService
+      .getProduct(id)
+      .pipe(
+        switchMap((item) => {
+          product = item;
+          return this.discountService.getPriceAfterDiscount(id);
+        })
+      )
+      .subscribe((priceAfterDiscount) => {
+        const item = this.items.find((item) => item.id === id);
+        if (item) {
+          item.quantity = (+item.quantity + 1).toString();
+        } else {
+          this.items.push({
+            id: id,
+            name: product.name,
+            price: product.price,
+            priceAfterDiscount: priceAfterDiscount,
+            imageUrl: product.imageUrl,
+            quantity: quantity,
+          });
+        }
+        this.total = +product.price * +quantity + this.total;
+        this.totalAfterDiscount =
+          +priceAfterDiscount * +quantity + this.totalAfterDiscount;
+        this.cartItemsUpdated.next({
+          totalAfterDiscount: this.totalAfterDiscount,
+          total: this.total,
+          items: this.items,
+          coupons: this.coupons,
+        });
       });
-    }
-    this.total = +price * +quantity + this.total;
-    this.cartItemsUpdated.next({
-      totalAfterDiscount: this.totalAfterDiscount,
-      total: this.total,
-      items: this.items,
-      coupons: this.coupons,
-    });
   }
 
   deleteItem(id: string) {

@@ -75,6 +75,14 @@
     margin: 20px 10px;
     align-self: flex-end;
   }
+  .buttons {
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
   .related-sections {
     width: 90%;
     display: flex;
@@ -100,11 +108,72 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
     overflow: auto;
-    width: 90%;
   }
   .related-products::-webkit-scrollbar {
     display: none;
+  }
+  .related-product {
+    display: block;
+    margin: 0px 3px;
+    width: 140px;
+  }
+  .customers-viewed-products {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+  .customers-viewed-products::-webkit-scrollbar {
+    display: none;
+  }
+  .customers-viewed-product {
+    display: block;
+    margin: 0px 3px;
+    width: 140px;
+  }
+  .recommended-products {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+  .recommended-products::-webkit-scrollbar {
+    display: none;
+  }
+  .recommended-product {
+    display: block;
+    margin: 0px 3px;
+    width: 140px;
+  }
+  .viewed-products {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+  .viewed-products::-webkit-scrollbar {
+    display: none;
+  }
+  .viewed-product {
+    display: block;
+    margin: 0px 3px;
+    width: 140px;
   }
 }
 

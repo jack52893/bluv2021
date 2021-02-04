@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Size } from 'src/app/utils/ui/size.type';
 
 @Component({
   selector: 'app-best-seller-tag',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./best-seller-tag.component.css']
 })
 export class BestSellerTagComponent implements OnInit {
+
+  @Input() size: Size = 'xsmall';
 
   constructor() { }
 
