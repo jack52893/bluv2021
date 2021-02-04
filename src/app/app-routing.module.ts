@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoryComponent } from './products/categories/category/category.component';
 import { ProductComponent } from './products/product/product.component';
+import { ProductResolver } from './products/product/service/product.resolver';
 import { SearchComponent } from './products/search/search.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductComponent,
-    // resolve: { product: ProductResolver },
+    resolve: { productData: ProductResolver },
   },
   { path: 'search/:query', component: SearchComponent },
   { path: 'category/:name', component: CategoryComponent },

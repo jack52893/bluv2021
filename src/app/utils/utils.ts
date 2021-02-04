@@ -24,12 +24,12 @@ export class Utils {
     });
     return promise;
   }
-  public static getObservable<T>(value: T, delay = false) {
+  public static getObservable<T>(value: T, delay = true) {
     const observable = new Observable<T>((observer) => {
       if (delay) {
         setTimeout(() => {
           observer.next(value);
-        }, 1500);
+        }, 100);
       } else {
         observer.next(value);
       }

@@ -9,19 +9,15 @@ mat-sidenav {
 .dialog {
   width: 100vw;
   height: 100vh;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-.spinner {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.spinner mat-spinner {
-  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255, 0.5);
+  overflow: hidden;
 }
 
 @media(min-width: 600px) {

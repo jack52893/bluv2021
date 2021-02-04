@@ -40,10 +40,12 @@
       </div>
       <div class="items">
         <form class='form' [formGroup]='form' (ngSubmit)='onSubmit()' *ngIf="breakpoint !== 'xsmall'">
-          <input type='text' class='search' placeholder="Search" #trigger='matAutocompleteTrigger'
+          <input type='text' class='search' (input)='onInput($event.target.value)' placeholder="Search" #trigger='matAutocompleteTrigger'
             formControlName='search' [matAutocomplete]='auto'>
           <mat-autocomplete #auto='matAutocomplete'>
-
+            <mat-option *ngFor='let option of options' [value]='option'>
+              {{ option }}
+            </mat-option>
           </mat-autocomplete>
           <mat-icon class='icon'>search</mat-icon>
         </form>

@@ -8,11 +8,13 @@ import {
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
-import { startWith, map } from 'rxjs/operators';
+import { startWith, map, switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CartService } from '../cart/service/cart.service';
 import { Breakpoint } from '../utils/ui/breakpoint.type';
 import { BreakpointService } from '../utils/ui/service/breakpoint.service';
+import { SearchService } from '../products/search/service/search.service';
+import { ProductService } from '../products/product/service/product.service';
 
 @Component({
   selector: 'app-header',
@@ -23,33 +25,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   cartItemsCount = null;
   form: FormGroup;
-  options: string[] = [];
-  filteredOptions: Observable<string[]>;
   breakpoint: Breakpoint = 'xsmall';
+  options: string[] = [];
   subscriptions: Subscription[] = [];
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
-  }
 
   constructor(
     private router: Router,
     private cartService: CartService,
-    private breakpointService: BreakpointService
+    private breakpointService: BreakpointService,
+    private searchService: SearchService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       search: new FormControl(),
     });
-    this.filteredOptions = this.form.get('search').valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value))
-    );
     this.subscriptions.push(
       this.cartService.cartItemsUpdated.subscribe((cart) => {
         this.cartItemsCount = cart.items.length;
@@ -60,6 +51,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.breakpoint = breakpoint;
       })
     );
+  }
+
+  onInput(value: string) {
+    this.options = [];
+    this.searchService
+      .searchProducts(value)
+      .pipe(
+        switchMap((val) => {
+          return this.productService.getProducts(val);
+        })
+      )
+      .subscribe((products) => {
+        products.slice(0, 10).forEach((product) => {
+          this.options.push(product.name);
+        });
+      });
   }
 
   onSubmit() {
@@ -83,7 +90,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    for(let subscription of this.subscriptions) {
+    for (let subscription of this.subscriptions) {
       subscription.unsubscribe();
     }
     this.subscriptions = undefined;
