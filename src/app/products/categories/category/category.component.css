@@ -10,8 +10,107 @@
 }
 .products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 5px;
   column-gap: 5px;
   margin: 10px;
+}
+@media (max-width: 599.98px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959.98px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1279.98px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .title {
+    margin-top: 20px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 10px;
+  }
 }
