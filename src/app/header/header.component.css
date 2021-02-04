@@ -12,8 +12,41 @@
 .title {
   font-size: large;
 }
-@media (max-width: 599.98px) {
+.items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+}
+.search {
+  border: none;
+  background: none;
+  caret-color: lightblue;
+  color: white;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 250px;
+}
+.search::placeholder {
+  color: lightblue;
+}
+.search:focus {
+  outline: none;
+  border-bottom: 1px solid lightblue;
+}
+.icon {
+  margin-left: -25px;
+  opacity: 0.5;
+}
 
+@media (max-width: 599.98px) {
 }
 
 @media (min-width: 600px) and (max-width: 959.98px) {
