@@ -5,37 +5,30 @@
     <mat-icon>home</mat-icon>Home
   </a>
 
-  <div mat-subheader>Categories</div>
-  <a mat-list-item (click)='onClose()' routerLink='/category/electronics'>
-    <div matLine>
-      Electronics
-    </div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </a>
-  <a mat-list-item (click)='onClose()' routerLink='/category/clothing'>
-    <div matLine>
-      Clothing
-    </div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </a>
-  <a mat-list-item (click)='onClose()' routerLink='/category/home'>
-    <div matLine>
-      Home
-    </div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </a>
-  <a mat-list-item (click)='onClose()' routerLink='/category/beauty'>
-    <div matLine>
-      Beauty
-    </div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </a>
-  <a mat-list-item (click)='onClose()' routerLink='/category/sports'>
-    <div matLine>
-      Sports
-    </div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </a>
+  <div matLine *ngIf='mainCategory === null'>
+    <div mat-subheader>Categories</div>
+    <a mat-list-item *ngFor='let mainCategory of mainCategories' (click)='onMainCategory(mainCategory)'>
+      <div matLine>
+        {{ mainCategory.name }}
+      </div>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </a>
+  </div>
+  <div matLine *ngIf='mainCategory !== null'>
+    <a mat-list-item (click)="mainCategory=null">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </a>
+    <div mat-subheader>{{ mainCategory.name }}</div>
+    <a mat-list-item *ngFor='let category of categories' (click)='onClose()'
+      [routerLink]="['category', category.name.toLowerCase()]" [queryParams]="{id : category.id}">
+      <div matLine>
+        {{ category.name }}
+      </div>
+    </a>
+  </div>
+
+
+
   <div mat-subheader>Account</div>
   <a mat-list-item (click)='onClose()' routerLink='/login'>
     <mat-icon>login</mat-icon>Login

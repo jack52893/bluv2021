@@ -18,8 +18,14 @@ export class ProductService {
     return Utils.getObservable(null);
   }
 
-  getProducts(): Observable<Product[]> {
+  getSomeProducts(): Observable<Product[]> {
     return Utils.getObservable(products);
+  }
+
+  getProducts(arr: string[]): Observable<Product[]> {
+    return Utils.getObservable<Product[]>(
+      products.filter((item) => arr.includes(item.id))
+    );
   }
 
   getProductImages(id: string): Observable<string[]> {

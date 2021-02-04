@@ -1,1 +1,7 @@
-<p>category works!</p>
+<div class="container">
+  <h1 class='title'>{{ category.name }}</h1>
+  <div class="products">
+    <app-product-card class='product' *ngFor='let product of products' [product]='product' [routerLink]="'/product/' + product.id">
+    </app-product-card>
+  </div>
+</div>
