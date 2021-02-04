@@ -2,11 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Breakpoint } from 'src/app/utils/ui/breakpoint.type';
+import { BreakpointService } from 'src/app/utils/ui/service/breakpoint.service';
 import { FavoriteService } from '../favorite/service/favorite.service';
 import { Review } from '../review/service/review.model';
 import { ProductComponentData } from './service/product-component-data.model';
 import { Product } from './service/product.model';
 import { RecommendedProductsService } from './service/recommended-products.service';
+import { ViewedProductsService } from './service/viewed-products.service';
 
 @Component({
   selector: 'app-product',
@@ -24,14 +27,17 @@ export class ProductComponent implements OnInit, OnDestroy {
   customersViewedProducts: Product[];
   recommendedProducts: Product[];
   viewedProducts: Product[];
+  breakpoint: Breakpoint = 'xsmall';
 
   priceAfterDiscount: string;
   subscriptions: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
+    private viewedProductsService: ViewedProductsService,
     private recommendedProductsService: RecommendedProductsService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private breakpointService: BreakpointService
   ) {}
 
   ngOnInit(): void {
@@ -45,15 +51,19 @@ export class ProductComponent implements OnInit, OnDestroy {
           this.bestSeller = data.productData.bestSeller;
           this.priceAfterDiscount = data.productData.priceAfterDiscount;
           this.relatedProducts = data.productData.relatedProducts;
-          this.customersViewedProducts = data.productData.customersViewedProducts;
-          this.viewedProducts = data.productData.viewedProducts;
+          this.customersViewedProducts =
+            data.productData.customersViewedProducts;
           return this.recommendedProductsService.getRecommendedProducts(
             data.productData.product.id
           );
+        }),
+        switchMap((recommendedProducts) => {
+          this.recommendedProducts = recommendedProducts;
+          return this.viewedProductsService.getViewedProducts();
         })
       )
-      .subscribe((recommendedProducts) => {
-        this.recommendedProducts = recommendedProducts;
+      .subscribe((viewedProducts) => {
+        this.viewedProducts = viewedProducts;
       });
 
     this.subscriptions.push(
@@ -62,6 +72,10 @@ export class ProductComponent implements OnInit, OnDestroy {
           this.favorite = data.favorite;
       })
     );
+
+    this.breakpointService.getBreakpoint().subscribe((breakpoint) => {
+      this.breakpoint = breakpoint;
+    });
   }
 
   onFavorite() {

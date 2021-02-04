@@ -1,5 +1,13 @@
 <button class="favorite" mat-icon-button (mousedown)='$event.stopPropagation();'
   (click)='$event.stopPropagation();onFavorite();'>
-  <mat-icon *ngIf='!favorite' color='primary'>favorite_border</mat-icon>
-  <mat-icon *ngIf='favorite' color='primary'>favorite</mat-icon>
+  <mat-icon [inline]='true' class="icon xsmall" *ngIf="!favorite && size === 'xsmall'" color='primary'>favorite_border</mat-icon>
+  <mat-icon [inline]='true' class="icon small" *ngIf="!favorite && size === 'small'" color='primary'>favorite_border</mat-icon>
+  <mat-icon [inline]='true' class="icon medium" *ngIf="!favorite && size === 'medium'" color='primary'>favorite_border</mat-icon>
+  <mat-icon [inline]='true' class="icon large" *ngIf="!favorite && size === 'large'" color='primary'>favorite_border</mat-icon>
+  <mat-icon [inline]='true' class="icon xlarge" *ngIf="!favorite && size === 'xlarge'" color='primary'>favorite_border</mat-icon>
+  <mat-icon [inline]='true' class="icon xsmall" *ngIf="favorite && size === 'xsmall'" color='primary'>favorite</mat-icon>
+  <mat-icon [inline]='true' class="icon small" *ngIf="favorite && size === 'small'" color='primary'>favorite</mat-icon>
+  <mat-icon [inline]='true' class="icon medium" *ngIf="favorite && size === 'medium'" color='primary'>favorite</mat-icon>
+  <mat-icon [inline]='true' class="icon large" *ngIf="favorite && size === 'large'" color='primary'>favorite</mat-icon>
+  <mat-icon [inline]='true' class="icon xlarge" *ngIf="favorite && size === 'xlarge'" color='primary'>favorite</mat-icon>
 </button>

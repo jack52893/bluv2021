@@ -2,7 +2,12 @@
   <div class="product">
     <h1 class='title'>{{ product?.name }}</h1>
     <div class="highlight">
-      <app-favorite [id]='product.id' class='favorite'></app-favorite>
+      <app-favorite [id]='product.id'
+        *ngIf="breakpoint === 'xsmall' || breakpoint === 'small' || breakpoint === 'medium'" class='favorite'>
+      </app-favorite>
+      <app-favorite [id]='product.id' [size]="'xlarge'" *ngIf="breakpoint === 'large' || breakpoint === 'xlarge'"
+        class='favorite'>
+      </app-favorite>
       <div class="tag">
         <app-best-seller-tag class='best-seller' [size]="'small'" *ngIf='bestSeller'></app-best-seller-tag>
       </div>
@@ -44,7 +49,7 @@
       <app-related-product-card class='related-product' *ngFor='let product of relatedProducts' [product]='product'
         [routerLink]="'/product/' + product.id"></app-related-product-card>
     </div>
-    <h3 class='section-title'>Products Viewed By Other Customers:</h3>
+    <h3 class='section-title'>Products Viewed By Customers:</h3>
     <div class='customers-viewed-products'>
       <app-related-product-card class='customers-viewed-product' *ngFor='let product of customersViewedProducts'
         [product]='product' [routerLink]="'/product/' + product.id"></app-related-product-card>
@@ -54,10 +59,10 @@
       <app-related-product-card class='recommended-product' *ngFor='let product of recommendedProducts'
         [product]='product' [routerLink]="'/product/' + product.id"></app-related-product-card>
     </div>
-    <h3 class='section-title'>Viewed Products:</h3>
+    <!-- <h3 class='section-title'>Viewed Products:</h3>
     <div class='viewed-products'>
       <app-related-product-card class='viewed-product' *ngFor='let product of viewedProducts' [product]='product'
         [routerLink]="'/product/' + product.id"></app-related-product-card>
-    </div>
+    </div> -->
   </div>
 </div>

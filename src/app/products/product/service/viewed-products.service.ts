@@ -6,7 +6,7 @@ import { Product } from './product.model';
 
 @Injectable({ providedIn: 'root' })
 export class ViewedProductsService {
-  getViewedProducts(id: string): Observable<Product[]> {
+  getViewedProducts(): Observable<Product[]> {
     return Utils.getObservable<Product[]>(products.slice(0, 20));
   }
 }
