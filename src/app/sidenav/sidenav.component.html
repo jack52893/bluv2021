@@ -1,5 +1,42 @@
 <mat-nav-list>
 
+
+  <a mat-list-item (click)='onClose()' routerLink='/'>
+    <mat-icon>home</mat-icon>Home
+  </a>
+
+  <div mat-subheader>Categories</div>
+  <a mat-list-item (click)='onClose()' routerLink='/category/electronics'>
+    <div matLine>
+      Electronics
+    </div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/category/clothing'>
+    <div matLine>
+      Clothing
+    </div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/category/home'>
+    <div matLine>
+      Home
+    </div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/category/beauty'>
+    <div matLine>
+      Beauty
+    </div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/category/sports'>
+    <div matLine>
+      Sports
+    </div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
+  <div mat-subheader>Account</div>
   <a mat-list-item (click)='onClose()' routerLink='/login'>
     <mat-icon>login</mat-icon>Login
   </a>

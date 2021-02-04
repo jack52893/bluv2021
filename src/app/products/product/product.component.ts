@@ -10,6 +10,7 @@ import { ReviewService } from '../review/service/review.service';
 import { BestSellerService } from '../tags/best-seller-tag/service/best-seller.service';
 import { CustomersViewedProductsService } from './service/customers-viewed-products.service';
 import { Product } from './service/product.model';
+import { ProductService } from './service/product.service';
 import { RecommendedProductsService } from './service/recommended-products.service';
 import { RelatedProductsService } from './service/related-products.service';
 import { ViewedProductsService } from './service/viewed-products.service';
@@ -36,6 +37,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private productService: ProductService,
     private reviewsService: ReviewService,
     private favoriteService: FavoriteService,
     private discountService: DiscountService,
@@ -52,7 +54,10 @@ export class ProductComponent implements OnInit, OnDestroy {
         .pipe(
           switchMap((data) => {
             this.product = data.product;
-            this.productImages = this.getProductImages();
+            return this.productService.getProductImages(this.product.id);
+          }),
+          switchMap((images) => {
+            this.productImages = images;
             return this.discountService.getPriceAfterDiscount(this.product.id);
           }),
           switchMap((priceAfterDiscount) => {

@@ -1,10 +1,10 @@
 <mat-toolbar color='primary'>
-  <mat-toolbar-row *ngIf="breakpoint !== 'xsmall'">
-    <div class="container">
-      <div class="main">
-        <div><button class='title' mat-button type="button" routerLink="/">Material 2021</button></div>
+  <!-- <mat-toolbar-row *ngIf="breakpoint !== 'xsmall'">
+    <div class="large-container">
+      <div class="large-main">
+        <div><button class='large-title' mat-button type="button" routerLink="/">Material 2021</button></div>
       </div>
-      <div class="items">
+      <div class="large-items">
         <form [formGroup]='form' (ngSubmit)='onSubmit()' class="search-form">
           <input class='tablet-search-input' placeholder="Search" #trigger='matAutocompleteTrigger' type="text"
             aria-label="Product" formControlName="search" [matAutocomplete]="auto"
@@ -17,7 +17,6 @@
           </mat-autocomplete>
           <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
         </form>
-        <!-- <input class="tablet-search-input" type="search"> -->
         <button type="button" mat-icon-button routerLink="/cart">
           <mat-icon *ngIf='cartItemsCount > 0' [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart
           </mat-icon>
@@ -29,17 +28,17 @@
         </button>
       </div>
     </div>
-  </mat-toolbar-row>
+  </mat-toolbar-row> -->
 
-  <mat-toolbar-row class="mobile-row" *ngIf="breakpoint === 'xsmall'">
-    <div class="mobile-container">
-      <div class="mobile-main">
-        <button class="mobile-menu" mat-icon-button (click)='onToggle()'>
+  <mat-toolbar-row>
+    <div class="container">
+      <div class='menu'>
+        <button mat-icon-button (click)='onToggle()'>
           <mat-icon>menu</mat-icon>
         </button>
-        <div><button class="title" routerLink="/" type="button" mat-button>Material 2021</button></div>
+        <div><button class='title' routerLink="/" type="button" mat-button>Material 2021</button></div>
       </div>
-      <div class="mobile-items">
+      <div>
         <button type="button" mat-icon-button routerLink='/cart'>
           <mat-icon [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart</mat-icon>
         </button>
@@ -49,8 +48,8 @@
       </div>
     </div>
   </mat-toolbar-row>
-  <mat-toolbar-row class="mobile-row" *ngIf="breakpoint === 'xsmall'">
-    <!-- <form [formGroup]='form' (ngSubmit)='onSubmit()' class="tablet-search-form">
+  <!-- <mat-toolbar-row class="mobile-row" *ngIf="breakpoint === 'xsmall'">
+    <form [formGroup]='form' (ngSubmit)='onSubmit()' class="tablet-search-form">
       <input class='tablet-search-input' placeholder="Search" #trigger='matAutocompleteTrigger' type="text"
         aria-label="Product" formControlName="search" [matAutocomplete]="auto"
         (keydown.enter)='$event.preventDefault(); $event.target.blur(); trigger.closePanel(); onSubmit()'>
@@ -61,6 +60,6 @@
         </mat-option>
       </mat-autocomplete>
       <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
-    </form> -->
-  </mat-toolbar-row>
+    </form>
+  </mat-toolbar-row> -->
 </mat-toolbar>
