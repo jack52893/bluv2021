@@ -76,11 +76,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
       .getPriceAfterDiscount(this.product.id)
       .subscribe((priceAfterDiscount) => {
         this.cartService.addToCart(
-          this.product.id,
-          this.product.name,
-          this.product.imageUrl,
-          this.product.price,
-          priceAfterDiscount
+          this.product.id
         );
       });
   }

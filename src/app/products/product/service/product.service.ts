@@ -11,15 +11,29 @@ export class ProductService {
   constructor() {}
 
   getProduct(id: string): Observable<Product> {
-    const data = products.filter((product) => product.id === id);
-    let product: Product = null;
-    if (data && data.length > 0) {
-      product = data[0];
+    const item = products.find((product) => product.id === id);
+    if (item) {
+      return Utils.getObservable(item);
     }
-    return Utils.getObservable(product);
+    return Utils.getObservable(null);
   }
 
   getProducts(): Observable<Product[]> {
     return Utils.getObservable(products);
+  }
+
+  getProductImages(id: string): Observable<string[]> {
+    const images: string[] = [];
+    const product = products.find((item) => item.id === id);
+    if (product) {
+      images.push(product.imageUrl);
+      for (let image of product.images) {
+        images.push(image);
+      }
+    }
+    for (let image of Utils.getPreviewImages()) {
+      images.push(image);
+    }
+    return Utils.getObservable<string[]>(images);
   }
 }

@@ -113,20 +113,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     );
   }
 
-  getProductImages(): string[] {
-    const images: string[] = [];
-    images.push(this.product.imageUrl);
-    if (this.product && this.product.images) {
-      for (let image of this.product.images) {
-        images.push(image);
-      }
-    }
-    for (let image of Utils.getPreviewImages()) {
-      images.push(image);
-    }
-    return images;
-  }
-
   onFavorite() {
     this.favoriteService.favorite(this.product.id);
   }

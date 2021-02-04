@@ -24,11 +24,11 @@ export class DiscountService {
   getPriceAfterDiscount(id: string): Observable<string> {
     return this.productService.getProduct(id).pipe(
       switchMap((product) => {
-        const data = discounts.filter((product) => product.id === id);
+        const item = discounts.find((product) => product.id === id);
         let newPrice = product.price;
-        if (data && data.length > 0) {
+        if (item) {
           newPrice = Math.floor(
-            ((100 - +data[0].discount) * +product.price) / 100
+            ((100 - +item.discount) * +product.price) / 100
           ).toString();
         }
         return Utils.getObservable<string>(newPrice);

@@ -13,7 +13,7 @@
     </div>
     <div class="details">
       <div class="rating">
-        <app-rating [rating]='rating' [reviews]='reviews?.length'></app-rating>
+        <!-- <app-rating [rating]='rating' [reviews]='reviews?.length'></app-rating> -->
       </div>
       <div class='discount'>
         <app-discount [id]='product.id' *ngIf='+priceAfterDiscount < +product.price'></app-discount>
