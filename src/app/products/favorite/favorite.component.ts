@@ -1,6 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Breakpoint } from 'src/app/utils/ui/breakpoint.type';
 import { BreakpointService } from 'src/app/utils/ui/service/breakpoint.service';
 import { Size } from 'src/app/utils/ui/size.type';
 import { FavoriteService } from './service/favorite.service';
@@ -15,12 +14,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   favorite: boolean = false;
-  @Input() size: Size = 'xsmall';
+  @Input() size: Size = 'large';
 
-  constructor(
-    private favoriteService: FavoriteService,
-    private breakpointService: BreakpointService
-  ) {}
+  constructor(private favoriteService: FavoriteService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(

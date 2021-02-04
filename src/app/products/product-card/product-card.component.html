@@ -7,11 +7,11 @@
   </div>
   <div class="image"><img [src]='product.imageUrl' [alt]='product.name'></div>
   <div class="details">
-    <div class='name' *ngIf="breakpoint === 'xsmall'">{{ product.name | limit : 100 }}</div>
-    <div class='name' *ngIf="breakpoint === 'small'">{{ product.name | limit : 100 }}</div>
-    <div class='name' *ngIf="breakpoint === 'medium'">{{ product.name | limit : 100 }}</div>
-    <div class='name' *ngIf="breakpoint === 'large'">{{ product.name | limit : 100 }}</div>
-    <div class='name' *ngIf="breakpoint === 'xlarge'">{{ product.name | limit : 120 }}</div>
+    <div class='name' *ngIf="breakpoint === 'xsmall'" [title]='product.name'>{{ product.name | limit : 100 }}</div>
+    <div class='name' *ngIf="breakpoint === 'small'" [title]='product.name'>{{ product.name | limit : 100 }}</div>
+    <div class='name' *ngIf="breakpoint === 'medium'" [title]='product.name'>{{ product.name | limit : 100 }}</div>
+    <div class='name' *ngIf="breakpoint === 'large'" [title]='product.name'>{{ product.name | limit : 100 }}</div>
+    <div class='name' *ngIf="breakpoint === 'xlarge'" [title]='product.name'>{{ product.name | limit : 120 }}</div>
     <div class="rating">
       <app-rating [rating]='rating' [reviews]='reviews '></app-rating>
     </div>

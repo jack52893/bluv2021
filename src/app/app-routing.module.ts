@@ -22,7 +22,7 @@ const routes: Routes = [
     component: ProductComponent,
     resolve: { productData: ProductResolver },
   },
-  { path: 'search/:query', component: SearchComponent },
+  { path: 'search/:value', component: SearchComponent },
   { path: 'category/:name', component: CategoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

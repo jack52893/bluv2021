@@ -12,13 +12,21 @@ export class SearchService {
   searchProducts(val: string): Observable<string[]> {
     return this.prodctService.getSomeProducts().pipe(
       map((products) => {
-        const values = val.split(' ');
+        const values: string[] = [];
+        val.split(' ').forEach((item) => {
+          values.push(item.trim().toLowerCase());
+        });
 
         const data: string[] = [];
         products.forEach((item) => {
-          // if(item.name.split(' ').join().trim().toLowerCase().indexOf(value) >= 0 ) {
-          //   data.push(item.id);
-          // }
+          values.forEach((value) => {
+            if (
+              item.name.split(' ').join().trim().toLowerCase().indexOf(value) >=
+              0
+            ) {
+              data.push(item.id);
+            }
+          });
         });
         return data;
       })

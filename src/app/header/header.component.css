@@ -45,7 +45,12 @@
   margin-left: -25px;
   opacity: 0.5;
 }
-
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 @media (max-width: 599.98px) {
 }
 

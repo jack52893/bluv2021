@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.options = [];
     const value = this.form.get('search').value;
     this.onSearch(value);
   }

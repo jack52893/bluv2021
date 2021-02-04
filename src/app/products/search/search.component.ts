@@ -4,9 +4,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product/service/product.model';
-import { ProductsService } from '../product/products.service';
 import { FilterComponent } from './filter/filter.component';
 import { Subscription } from 'rxjs';
+import { SearchService } from './service/search.service';
+import { switchMap } from 'rxjs/operators';
+import { ProductService } from '../product/service/product.service';
 
 @Component({
   selector: 'app-search',
@@ -16,13 +18,15 @@ import { Subscription } from 'rxjs';
 export class SearchComponent implements OnInit, OnDestroy {
   products: Product[];
   form: FormGroup;
+  options: string[] = [];
   subscriptions: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService,
     private dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private searchService: SearchService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -30,12 +34,46 @@ export class SearchComponent implements OnInit, OnDestroy {
       search: new FormControl(),
     });
     this.route.params.subscribe((params) => {
-      const query = params['query'];
+      const value = params['value'];
       this.form.setValue({
-        search: query,
+        search: value,
       });
-      this.products = this.productsService.searchProducts(query);
+      this.search(value);
     });
+  }
+
+  search(val: string) {
+    this.options = [];
+    this.subscriptions.push(
+      this.searchService
+        .searchProducts(val)
+        .pipe(
+          switchMap((data) => {
+            return this.productService.getProducts(data);
+          })
+        )
+        .subscribe((products) => {
+          this.products = products;
+        })
+    );
+  }
+
+  onInput(val: string) {
+    this.options = [];
+    this.subscriptions.push(
+      this.searchService
+        .searchProducts(val)
+        .pipe(
+          switchMap((data) => {
+            return this.productService.getProducts(data);
+          })
+        )
+        .subscribe((products) => {
+          for (let product of products) {
+            this.options.push(product.name);
+          }
+        })
+    );
   }
 
   onFilter() {
@@ -57,8 +95,24 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
   }
 
+  onSubmit() {
+    const value = this.form.get('search').value;
+    this.onSearch(value);
+  }
+
+  onSearch(value: string) {
+    this.options = [];
+    if (value && value !== '') {
+      this.search(value);
+    }
+  }
+
+  onOptionSelected(value: string) {
+    this.search(value);
+  }
+
   ngOnDestroy() {
-    for(let subscription of this.subscriptions) {
+    for (let subscription of this.subscriptions) {
       subscription.unsubscribe();
     }
     this.subscriptions = undefined;

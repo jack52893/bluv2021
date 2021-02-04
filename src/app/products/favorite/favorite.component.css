@@ -1,14 +1,14 @@
 .xsmall {
-  font-size: x-small;
-}
-.small {
   font-size: small;
 }
-.medium {
+.small {
   font-size: medium;
 }
-.large {
+.medium {
   font-size: large;
+}
+.large {
+  font-size: x-large;
 }
 .xlarge {
   font-size: xx-large;
