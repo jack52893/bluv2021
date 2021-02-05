@@ -3,8 +3,9 @@
   <form class='form' [formGroup]='form' (ngSubmit)='onSubmit()'>
     <input type='text' class='search' (input)='onInput($event.target.value)' placeholder="Search"
       #trigger='matAutocompleteTrigger' formControlName='search' [matAutocomplete]='auto'>
-    <mat-autocomplete (ngSubmit)='onSearch()' (optionActivated)='onOptionSelected($event.option.value)'
-      (optionSelected)='onOptionSelected($event.option.value)' #auto='matAutocomplete'>
+    <mat-autocomplete (ngSubmit)='onSearch($event.target.option.value)'
+      (optionActivated)='onOptionSelected($event.option.value)' (optionSelected)='onOptionSelected($event.option.value)'
+      #auto='matAutocomplete'>
       <mat-option *ngFor='let option of options' [value]='option'>
         {{ option }}
       </mat-option>

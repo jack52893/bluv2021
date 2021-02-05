@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Coupon } from 'src/app/coupon/service/coupon.model';
 import { CouponService } from 'src/app/coupon/service/coupon.service';
@@ -58,6 +58,15 @@ export class CartService {
     private productService: ProductService,
     private discountService: DiscountService
   ) {}
+
+  getCart(): Observable<Cart> {
+    return Utils.getObservable<Cart>({
+      total: this.total,
+      totalAfterDiscount: this.totalAfterDiscount,
+      items: this.items,
+      coupons: this.coupons,
+    });
+  }
 
   applyCoupon(coupon: string) {
     const data = this.coupons.filter((item) => item.coupon === coupon);

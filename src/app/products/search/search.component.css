@@ -162,7 +162,7 @@
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 10px;
   }
 }
@@ -205,7 +205,7 @@
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 10px;
   }
 }
@@ -248,7 +248,7 @@
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     column-gap: 10px;
   }
 }

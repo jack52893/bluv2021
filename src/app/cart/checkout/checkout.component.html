@@ -1,1 +1,49 @@
-
+<div class="container">
+  <h1 class="title">Checkout</h1>
+  <div class="section">
+    <div class="section-title">
+      Order Details:
+    </div>
+    <div class='cart'>
+      <div class="main">
+        <div class="one"></div>
+        <div class="two">Name</div>
+        <div class="three">Quantity</div>
+        <div class="four">Price</div>
+      </div>
+      <div class="item" *ngFor='let item of cart?.items'>
+        <img class='image' [src]='item.imageUrl' [alt]='item.name'>
+        <div class="name">{{ item.name }}</div>
+        <div class="quantity">{{ item.quantity }}</div>
+        <div class="price">
+          <app-price [id]='item.id'></app-price>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="total">
+      <div class="title-2">Total: </div>
+      <div class="content">
+        <div>{{ cart.totalAfterDiscount + ' $' }}</div>
+        <del class='total-before-discount'>{{ cart.total + ' $'}}</del>
+      </div>
+    </div>
+  </div>
+  <div class="line-2"></div>
+  <div class="section">
+    <div class="section-title">
+      Payment Details
+    </div>
+  </div>
+  <div class="line-2"></div>
+  <div class="section">
+    <div class="section-title">
+      Shipping Details
+    </div>
+  </div>
+  <div class="confirm">
+    <button mat-raised-button type="button" color='primary' routerLink="/success">
+      <mat-icon>checkout</mat-icon> Confirm
+    </button>
+  </div>
+</div>
