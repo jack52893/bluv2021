@@ -14,11 +14,11 @@
   </form>
 
   <h3 class='section-title'>Search results {{ products.length }} products found:</h3>
-  <div class='filters'>
+  <!-- <div class='filters'>
     <button class="filter" mat-icon-button type="button" (click)='onFilter()'>
       <mat-icon>filter</mat-icon>Filter
     </button>
-  </div>
+  </div> -->
   <div class='products'>
     <app-product-card matRipple class='product' [product]='product' *ngFor='let product of products'
       [routerLink]="'/product/' + product.id"></app-product-card>

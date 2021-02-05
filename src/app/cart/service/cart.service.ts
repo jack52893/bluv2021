@@ -18,7 +18,7 @@ export class CartService {
   items: CartItem[] = [
     {
       id: 'b96bdcd0-9c6f-4ede-8e58-54a258722272',
-      name: 'Samsung Galaxy S21 Ultra 5G',
+      name: 'Samsung Galaxy S21 Ultra 5G Galaxy S21 Ultra 5G mmWave model weighs 229g. Display. Galaxy S21 5G: 6.2" flat FHD+ Dynamic AMOLED 2X',
       imageUrl: 'assets/images/preview/image-1.jpg',
       price: '1200',
       priceAfterDiscount: '1200',
@@ -27,7 +27,7 @@ export class CartService {
     {
       id: '31404ae6-de5a-4ecd-b668-a641d45aab26',
       name:
-        'Samsung Galaxy S20 FE G780F 128GB Dual Sim GSM Unlocked Android Smart Phone (Latin America Variant/US Compatible LTE) - Cloud Red Samsung Galaxy S20 FE G780F 128GB Dual Sim GSM Unlocked Android Smart Phone (Latin America Variant/US Compatible LTE) - Cloud Red',
+        'Samsung Galaxy S21 Ultra 5G Display 6.80-inch (1440x3220) Processor Samsung Exynos 2100. Front Camera 40MP. Rear Camera 108MP + 12MP + 10MP + 10MP. RAM 12GB. Storage 128GB. Battery Capacity 5000mAh. OS Android 11',
       imageUrl: 'assets/images/preview/image-1.jpg',
       price: '800',
       priceAfterDiscount: '800',
@@ -35,7 +35,7 @@ export class CartService {
     },
     {
       id: 'b3f2b00a-f9ec-43ca-b510-e9f2ac4da7c5',
-      name: 'SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone',
+      name: 'Apple iPhone 12 Pro Max 6.8" 8K 256GB Android 11 One  Factory Unlocked Cell Phone with 256GB (U.S. Warranty)',
       imageUrl: 'assets/images/preview/image-1.jpg',
       price: '850',
       priceAfterDiscount: '722',
