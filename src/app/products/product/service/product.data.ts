@@ -26,7 +26,7 @@ export const products: Product[] = [
   },
   {
     id: 'b3f2b00a-f9ec-43ca-b510-e9f2ac4da7c5',
-    name: 'SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone',
+    name: 'SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone SAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - SmartphoneSAMSUNG Unlocked Galaxy Note 20, 128GB Bronze - Smartphone',
     description: '',
     price: '850',
     // imageUrl: 'assets/images/products/product-7.jpg',

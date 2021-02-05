@@ -30,6 +30,8 @@ import { FavoriteComponent } from './products/favorite/favorite.component';
 import { BestSellerTagComponent } from './products/tags/best-seller-tag/best-seller-tag.component';
 import { RelatedProductCardComponent } from './products/related-product-card/related-product-card.component';
 import { AddToCartButtonComponent } from './products/buttons/add-to-cart-button/add-to-cart-button.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
+import { SuccessComponent } from './cart/success/success.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { AddToCartButtonComponent } from './products/buttons/add-to-cart-button/
     FavoriteComponent,
     BestSellerTagComponent,
     RelatedProductCardComponent,
-    AddToCartButtonComponent
+    AddToCartButtonComponent,
+    CheckoutComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

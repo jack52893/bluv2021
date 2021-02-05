@@ -19,6 +19,7 @@
     </button>
   </div>
   <div class='products'>
-    <app-product-card class='product' [product]='product' *ngFor='let product of products'></app-product-card>
+    <app-product-card matRipple class='product' [product]='product' *ngFor='let product of products'
+      [routerLink]="'/product/' + product.id"></app-product-card>
   </div>
 </div>

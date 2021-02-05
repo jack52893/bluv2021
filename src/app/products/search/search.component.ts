@@ -16,7 +16,7 @@ import { ProductService } from '../product/service/product.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  products: Product[];
+  products: Product[] = [];
   form: FormGroup;
   options: string[] = [];
   subscriptions: Subscription[] = [];

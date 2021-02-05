@@ -27,12 +27,15 @@
   justify-content: space-between;
   align-items: center;
 }
+.favorite {
+  font-size: xx-large;
+}
 .image {
   width: 100%;
   box-sizing: border-box;
 }
 .images {
-  max-width: 100%;
+  width: 90%;
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -101,9 +104,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .review {
   margin: 5px auto;
+  width: 100%;
 }
 .related-products {
   display: flex;
@@ -201,7 +206,7 @@
   }
   .highlight {
     height: 100px;
-    width: 100%;
+    width: 60%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -281,9 +286,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   .review {
     margin: 5px auto;
+    width: 100%;
   }
   .related-products {
     display: flex;
@@ -382,7 +389,7 @@
     margin: 0px;
   }
   .highlight {
-    height: 100px;
+    height: 60px;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -463,9 +470,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   .review {
     margin: 5px auto;
+    width: 100%;
   }
   .related-products {
     display: flex;
@@ -564,7 +573,7 @@
     margin: 0px;
   }
   .highlight {
-    height: 100px;
+    height: 60px;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -645,9 +654,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   .review {
     margin: 5px auto;
+    width: 100%;
   }
   .related-products {
     display: flex;
@@ -665,7 +676,7 @@
   .related-product {
     display: block;
     margin: 0px 3px;
-    width: 140px;
+    width: 160px;
   }
   .customers-viewed-products {
     display: flex;
@@ -761,7 +772,7 @@
     box-sizing: border-box;
   }
   .images {
-    max-width: 100%;
+    width: 90%;
     height: 100px;
     display: flex;
     flex-direction: row;
@@ -830,9 +841,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   .review {
     margin: 5px auto;
+    width: 100%;
   }
   .related-products {
     display: flex;
@@ -1012,9 +1025,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   .review {
     margin: 5px auto;
+    width: 100%;
   }
   .related-products {
     display: flex;
@@ -1032,7 +1047,7 @@
   .related-product {
     display: block;
     margin: 0px 3px;
-    width: 140px;
+    width: 200px;
   }
   .customers-viewed-products {
     display: flex;
