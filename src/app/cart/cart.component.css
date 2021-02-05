@@ -1,3 +1,150 @@
+.title {
+  font-size: large;
+  text-align: center;
+  margin: 30px 0px;
+}
+.container-empty {
+  text-align: center;
+}
+.container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0px auto;
+}
+.section {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+}
+.image {
+  width: 100px;
+  max-height: 100px;
+  cursor: pointer;
+}
+.details {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.name {
+  min-height: 30px;
+  cursor: pointer;
+}
+.number {
+  width: 50px;
+  margin-right: 10px;
+}
+.number input {
+  text-align: center;
+}
+.coupons-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.coupons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.coupon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.coupon-title {
+  margin: 0px 20px;
+}
+.coupon-button {
+  margin: 0px 20px;
+}
+.line {
+  width: 80%;
+  border-bottom:1px solid lightblue;
+  margin: 30px 0px;
+}
+.total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: large;
+  margin-right: 260px;
+}
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 10px;
+  width: 100%;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.discount {
+  display: flex;
+  justify-content: flex-end;
+}
+.content {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.value {
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+.button {
+  align-self: flex-start;
+}
+.checkout {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 @media (max-width: 599.98px) {
   .title {
     font-size: large;

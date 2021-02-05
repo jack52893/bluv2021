@@ -65,6 +65,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 20px;
 }
 .price {
   min-height: 30px;
@@ -73,6 +74,7 @@
   justify-content: flex-end;
   align-items: center;
   font-weight: bold;
+  margin-right: 20px;
 }
 .action {
   min-height: 80px;
@@ -89,9 +91,6 @@
   margin-right: 5px;
   margin-left: -3px;
 }
-
-
-
 @media (max-width: 599.98px) {
   :host:focus {
     outline: none;
@@ -160,6 +159,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 10px;
   }
   .price {
     min-height: 30px;
@@ -168,6 +168,7 @@
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    margin-right: 10px;
   }
   .action {
     min-height: 80px;
@@ -255,6 +256,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 10px;
   }
   .price {
     min-height: 40px;
@@ -263,6 +265,7 @@
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    margin-right: 10px;
   }
   .action {
     min-height: 90px;
@@ -444,6 +447,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
   }
   .price {
     min-height: 30px;
@@ -452,6 +456,7 @@
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    margin-right: 20px;
   }
   .action {
     min-height: 80px;
@@ -538,6 +543,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
   }
   .price {
     min-height: 30px;
@@ -546,6 +552,7 @@
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
+    margin-right: 20px;
   }
   .action {
     min-height: 80px;

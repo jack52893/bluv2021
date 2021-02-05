@@ -13,8 +13,8 @@ import { Cart } from './cart.model';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   // total = 0;
-  total = 3522;
-  totalAfterDiscount = 2300;
+  total = 3650;
+  totalAfterDiscount = 3522;
   items: CartItem[] = [
     {
       id: 'b96bdcd0-9c6f-4ede-8e58-54a258722272',

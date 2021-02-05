@@ -1,3 +1,13 @@
+:host {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 10px;
+}
+.product {
+  border-radius: 10px;
+}
 @media (max-width: 599.98px) {
   :host {
     display: grid;
