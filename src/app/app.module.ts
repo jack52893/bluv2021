@@ -32,6 +32,7 @@ import { RelatedProductCardComponent } from './products/related-product-card/rel
 import { AddToCartButtonComponent } from './products/buttons/add-to-cart-button/add-to-cart-button.component';
 import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { SuccessComponent } from './cart/success/success.component';
+import { MainCategoryComponent } from './products/categories/main-category/main-category.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SuccessComponent } from './cart/success/success.component';
     AddToCartButtonComponent,
     CheckoutComponent,
     SuccessComponent,
+    MainCategoryComponent
   ],
   imports: [
     BrowserModule,

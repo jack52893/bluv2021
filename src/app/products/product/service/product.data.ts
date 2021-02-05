@@ -173,7 +173,25 @@ export const products: Product[] = [
   {
     id: '3505d4bb-f210-4aec-8a58-bd89e4d3589e',
     name:
-      'Samsung Galaxy S20+ Plus 5G Factory Unlocked New Android Cell Phone US Version, 128GB of Storage, Fingerprint ID and Facial Recognition, Long-Lasting Battery, Black, SM-G986UZKAXAA',
+      'Samsung Galaxy S20+ Plus 5G Factory Unlocked New Android Cell Phone US Version, 128GB of Storage, Samsung Galaxy S20 / Galaxy S20 Plus.',
+    description: '',
+    price: '800',
+    imageUrl: 'assets/images/preview/image-1.jpg',
+    images: [],
+  },
+  {
+    id: '3505d4bb-f210-4aec-8a58-bd89e4d3589e',
+    name:
+      'Samsung Galaxy S20+ Plus 5G Factory Unlocked New Android Cell Phone US Version, 128GB of Storage',
+    description: '',
+    price: '800',
+    imageUrl: 'assets/images/preview/image-1.jpg',
+    images: [],
+  },
+  {
+    id: '3505d4bb-f210-4aec-8a58-bd89e4d3589e',
+    name:
+      'Samsung Galaxy S20 Fan Edition: Specs, Features, and Price! . Samsung Galaxy S20 Fan Edition phone specs feature a 6.5-inch Super AMOLED with',
     description: '',
     price: '800',
     imageUrl: 'assets/images/preview/image-1.jpg',

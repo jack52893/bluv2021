@@ -1,5 +1,12 @@
-<div class="main-category" matRipple *ngFor='let category of mainCategories'>
+<div class="container">
+
+<div class="main-category mat-card" matRipple *ngFor='let mainCategory of mainCategories'
+  [routerLink]="'/main-category/' + mainCategory?.id" [queryParams]="{ id: mainCategory?.id}">
   <div class='name'>
-    {{ category.name }}
+    {{ mainCategory?.name }}
   </div>
 </div>
+
+
+</div>
+

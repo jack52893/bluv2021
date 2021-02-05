@@ -30,4 +30,10 @@ export class MainCategoryService {
         .map((item) => item.categoryId)
     );
   }
+
+  getMainCategory(id: string): Observable<MainCategory> {
+    return Utils.getObservable<MainCategory>(
+      mainCategories.find((item) => item.id === id)
+    );
+  }
 }
