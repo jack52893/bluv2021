@@ -11,7 +11,7 @@
 }
 .name {
   margin-left: 10px;
-  width: 400px;
+  max-width: 500px;
 }
 .image {
   width: 120px;
@@ -72,7 +72,6 @@
   grid-template-columns: 1fr 5fr 1fr 2fr;
   column-gap: 10px;
   margin: 10px 0px;
-  width: 100%;
 }
 .one {
   width: 120px;

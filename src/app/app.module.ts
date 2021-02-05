@@ -59,7 +59,7 @@ import { SuccessComponent } from './cart/success/success.component';
     RelatedProductCardComponent,
     AddToCartButtonComponent,
     CheckoutComponent,
-    SuccessComponent
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,
