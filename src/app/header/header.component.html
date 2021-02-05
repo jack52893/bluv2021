@@ -1,42 +1,11 @@
 <mat-toolbar color='primary'>
-  <!-- <mat-toolbar-row *ngIf="breakpoint !== 'xsmall'">
-    <div class="large-container">
-      <div class="large-main">
-        <div><button class='large-title' mat-button type="button" routerLink="/">Material 2021</button></div>
-      </div>
-      <div class="large-items">
-        <form [formGroup]='form' (ngSubmit)='onSubmit()' class="search-form">
-          <input class='tablet-search-input' placeholder="Search" #trigger='matAutocompleteTrigger' type="text"
-            aria-label="Product" formControlName="search" [matAutocomplete]="auto"
-            (keydown.enter)='$event.preventDefault(); $event.target.blur(); trigger.closePanel(); onSubmit()'>
-          <mat-autocomplete (ngSubmit)='onSearch()' (optionActivated)='onOptionSelected($event.option.value)'
-            (optionSelected)='onOptionSelected($event.option.value)' #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-          <mat-icon class="tablet-search-icon" matSuffix>search</mat-icon>
-        </form>
-        <button type="button" mat-icon-button routerLink="/cart">
-          <mat-icon *ngIf='cartItemsCount > 0' [matBadge]='cartItemsCount' matBadgeColor='accent'>shopping_cart
-          </mat-icon>
-          <mat-icon *ngIf='cartItemsCount <= 0 '>shopping_cart</mat-icon>
-        </button>
-
-        <button type='button' mat-icon-button routerLink='/login'>
-          <mat-icon>account_circle</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-toolbar-row> -->
-
   <mat-toolbar-row>
     <div class="container">
       <div class='menu'>
         <button mat-icon-button (click)='onToggle()' *ngIf="breakpoint === 'xsmall'">
           <mat-icon>menu</mat-icon>
         </button>
-        <div><button class='title' routerLink="/" type="button" mat-button>Material 2021</button></div>
+        <div><button class='title' routerLink="/" type="button" mat-button>Blunda</button></div>
       </div>
       <div class="items">
         <form class='form' [formGroup]='form' (ngSubmit)='onSubmit()' *ngIf="breakpoint !== 'xsmall'">
